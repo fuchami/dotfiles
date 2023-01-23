@@ -1,33 +1,30 @@
 {
-    "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
-
     // フォントの設定
     "editor.fontFamily": "'Source Han Code JP',Menlo, Monaco, monospace", 
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+
     // フォントのサイズ
-    "editor.fontSize": 14,
+    "editor.fontSize": 13,
+
     // テーマの設定
     "workbench.colorTheme": "Monokai Dimmed",
-
-    // Git 実行可能ファイルのパス
-    "git.path": "/usr/bin/git",
-    
-    // vim 関連
-
-    // 言語ごとの設定
-    "editor.tabSize": 2,
-    "[python]": {
-        "editor.tabSize": 4
-    },
     "workbench.colorCustomizations": {
         "statusBar.background": "#ba2d65",
         "statusBar.noFolderBackground": "#ba2d65",
         "statusBar.debuggingBackground": "#ba2d65"
     },
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "welcomePage",
+    
+    // 言語ごとの設定
+    "editor.tabSize": 2,
+    "[python]": {
+        "editor.tabSize": 4
+    },
     "gitlens.advanced.messages": {
-      "suppressLineUncommittedWarning": true,
+    "suppressLineUncommittedWarning": true,
     },
     "window.zoomLevel": 1,
-    "workbench.iconTheme": "material-icon-theme",
 
     "auto-close-tag.activationOnLanguage": [
         "javascript",
@@ -42,11 +39,11 @@
         "ruby"
     ],
     "breadcrumbs.enabled": true,
-    "workbench.startupEditor": "welcomePage",
     "editor.largeFileOptimizations": false,
-    "git.ignoreMissingGitWarning": true,
     "explorer.confirmDelete": false,
     "redhat.telemetry.enabled": true,
-    "terminal.integrated.fontFamily": "MesloLGS NF",
-
+    "terminal.integrated.fontSize": 13,
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/yuuki/dotfiles/.github/workflows/main.yaml"
+    },
 }
