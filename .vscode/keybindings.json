@@ -10,7 +10,13 @@
         "command": "-extension.vim_escape",
         "when": "editorTextFocus && vim.active && !inDebugRepl"
     },
-
-    { "key": "cmd+shift+enter", "command": "workbench.action.terminal.focus" },
-    { "key": "cmd+shift+enter", "command": "workbench.action.focusActiveEditorGroup", "when":"terminalFocus" },
+    { 
+        "key": "cmd+shift+enter",
+        "command": "workbench.action.terminal.focus"
+    },
+    { 
+        "key": "cmd+shift+enter",
+        "command": "workbench.action.focusActiveEditorGroup", 
+        "when":"terminalFocus"
+    }
 ]
