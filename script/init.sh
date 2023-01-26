@@ -17,4 +17,4 @@ echo "install brew..."
 
 # Install brew/cask application
 echo "install application with Brewfile..."
-brew bundle --global
+brew bundle
