@@ -1,9 +1,9 @@
 # Do everything.
-all: init link
+all: init
 
 # Set initial preference.
 init:
 	./script/init.sh
 
-link:
-	./script/link.sh
+# link:
+# 	./script/link.sh
