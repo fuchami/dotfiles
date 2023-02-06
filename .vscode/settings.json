@@ -17,14 +17,18 @@
     "workbench.startupEditor": "welcomePage",
     
     // 言語ごとの設定
-    "editor.tabSize": 2,
     "[python]": {
-        "editor.tabSize": 4
+        "editor.tabSize": 4,
     },
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.lintOnSave": true,
+    "python.formatting.provider": "yapf",
+
     "gitlens.advanced.messages": {
     "suppressLineUncommittedWarning": true,
     },
-    "window.zoomLevel": 1,
 
     "auto-close-tag.activationOnLanguage": [
         "javascript",
@@ -46,4 +50,5 @@
     "yaml.schemas": {
         "https://json.schemastore.org/github-workflow.json": "file:///Users/yuuki/dotfiles/.github/workflows/main.yaml"
     },
+    "window.zoomLevel": 1,
 }

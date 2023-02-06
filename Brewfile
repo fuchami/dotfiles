@@ -19,5 +19,3 @@ cask "rectangle"
 cask "clipy"
 cask "karabiner-elements"
 cask "rectangle"
-
-mas 'LINE', id: 539883307
