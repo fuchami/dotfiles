@@ -10,7 +10,7 @@ for dotfile in "${SCRIPT_DIR}"/.??* ; do
     [[ "$dotfile" == "${SCRIPT_DIR}/.DS_Store" ]] && continue
 
     # zsh系の設定ファイルに関しての処理
-    if [[ "$(basename "$dotfile")" == .z* ]]; then
+    if [[ "$(basename "$dotfile")" == .z* ]] && [[ -d "$HOME/.zprezto/runcoms/" ]]; then
         ln -fnsv "$dotfile" "$HOME/.zprezto/runcoms"
     else
         ln -fnsv "$dotfile" "$HOME"
