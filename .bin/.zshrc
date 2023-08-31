@@ -1,0 +1,1 @@
+/Users/fuchami/.zprezto/runcoms/zshrc
