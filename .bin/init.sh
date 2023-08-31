@@ -15,6 +15,3 @@ xcode-select --install > /dev/null
 echo "install brew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" > /dev/null
 
-# Install brew/cask application
-echo "install application with Brewfile..."
-brew bundle

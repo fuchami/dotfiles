@@ -1,9 +1,14 @@
 # Do everything.
-all: init
+all: init link brew
 
 # Set initial preference.
 init:
-	./script/init.sh
+	.bin/init.sh
 
-# link:
-# 	./script/link.sh
+# Link dotfiles.
+link:
+	.bin/link.sh
+
+# Install macOS applications.
+brew:
+	brew bundle --global
