@@ -2,14 +2,55 @@
 
 ```bash
 $ git clone https://github.com/fuchami/dotfiles ~/dotfiles
-
 $ make
 
 ```
 
+---
+
+
+## その他手動で設定するものたち
+
+### mac setting
+
+- trackpad
+  - タップでクリック
+  - 軌道の速さ:最速に
+  - MissionControl -> 4本指で上スワイプ
+  - 3本指ドラッグ有効
+- keyboard
+  - リピート最速
+  - capslock -> control に変更
+
+### Application
+
+- iTerm2
+  - General -> Prefereces から/dotfiles/iterm2 のディレクトリを指定
+- Rectangle
+  - settings/RectangleConfig.json をインポート
+- google-japanese-ime
+  - settings/keymap.txt をインポート
+- Karabiner-elements
+  - Exchange semicolon and colon
+  - コマンドキー（左右どちらでも）を単体で押した時に、英数・かなをトグルで切り替える(rev2)
+
+### Other
+
+#### chrome extension
+
+- Vimium
+- ato-ichinen
+- Black Menu
+
+(これも管理したい)
+
+#### zsh pligin
+
+以下をインストール
+
+- Prezto
+
+---
+
 ## reference:
 - https://dev.classmethod.jp/articles/joined-mac-dotfiles-customize/
-- https://tech.smartcamp.co.jp/entry/setup-by-dotfiles
-- https://korosuke613.hatenablog.com/entry/2021/05/23/mydotfiles
-- https://qiita.com/miiina016/items/018331b36ecf57ed8973
-
