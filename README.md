@@ -3,7 +3,6 @@
 ```bash
 $ git clone https://github.com/fuchami/dotfiles ~/dotfiles
 $ make
-
 ```
 
 ---
@@ -49,6 +48,9 @@ $ make
 以下をインストール
 
 - Prezto
+
+#### Astronvim
+- https://github.com/fuchami/astronvim_config
 
 ---
 
