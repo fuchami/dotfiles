@@ -7,7 +7,6 @@ $ make
 
 ---
 
-
 ## その他手動で設定するものたち
 
 ### mac setting
@@ -25,6 +24,7 @@ $ make
 
 - iTerm2
   - General -> Prefereces から/dotfiles/iterm2 のディレクトリを指定
+  - [iterm2-color-schemes](https://iterm2colorschemes.com/)からiceberg-darkをダウンロードしてimport
 - Rectangle
   - settings/RectangleConfig.json をインポート
 - google-japanese-ime
@@ -32,6 +32,7 @@ $ make
 - Karabiner-elements
   - Exchange semicolon and colon
   - コマンドキー（左右どちらでも）を単体で押した時に、英数・かなをトグルで切り替える(rev2)
+  - TODO: 管理する
 
 ### Other
 
@@ -50,9 +51,11 @@ $ make
 - Prezto
 
 #### Astronvim
+
 - https://github.com/fuchami/astronvim_config
 
 ---
 
 ## reference:
+
 - https://dev.classmethod.jp/articles/joined-mac-dotfiles-customize/

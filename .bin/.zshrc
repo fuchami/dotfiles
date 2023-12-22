@@ -48,6 +48,13 @@ unset __conda_setup
 
 # Custom Alias
 alias vim="nvim"
+alias v="nvim"
+alias c="clear"
+alias t="tmux"
+
+# For google-cloud-sdk
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
