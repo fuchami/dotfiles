@@ -1,0 +1,1 @@
+/Users/fuchami/Code/dotfiles/.bin/.wezterm.lua
