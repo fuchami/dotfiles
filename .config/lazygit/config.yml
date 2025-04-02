@@ -1,0 +1,7 @@
+gui:
+  nerdFontsVersion: '3'
+  language: 'ja'
+  showIcons: true
+git:
+  paging:
+    externalDiffCommand: difft --color=always
