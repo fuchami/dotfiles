@@ -1,61 +1,71 @@
 format = """
-[░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
-[](bg:#769ff0 fg:#a3aed2)\
+[ ](bg:#333333)$os[ ](fg:#7a7a7a bg:#333333)\
 $directory\
-[](fg:#769ff0 bg:#394260)\
 $git_branch\
 $git_status\
-[](fg:#394260 bg:#212736)\
-$python\
-[](fg:#212736 bg:#1d2230)\
-$time\
-[ ](fg:#1d2230)\
-\n$character"""
+[ ](fg:#333333)
+$character
+"""
+right_format = "[](fg:#333333)$status$cmd_duration$nix_shell$custom"
+[cmd_duration]
+format = "[](fg:#7a7a7a bg:#333333)[ $duration ]($style)"
+style = "fg:#9b9b9b bg:#333333"
+
+[os]
+disabled = false
+style = "fg:#ffffff bg:#333333"
+
+[os.symbols]
+Ubuntu = "󰕈"
+Macos = "󰀵"
+
+[custom]
+[custom.direnv]
+format = "[](fg:#7a7a7a bg:#333333)[ $symbol ]($style)"
+style = "fg:#7a7a7a bg:#333333"
+symbol = "[▼](fg:white bg:#333333)"
+when = "test \"$DIRENV_WATCHES\" != \"\""
+
+[custom.vim_shell]
+format = "[](fg:#7a7a7a bg:#333333)[ $symbol ]($style)"
+style = "fg:#7a7a7a bg:#333333"
+symbol = "[](fg:green bg:#333333)"
+when = "test \"$VIMRUNTIME\" != \"\""
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
-format = "[ $path ]($style)"
+format = "[  $path ]($style)"
+style = "fg:#00afff bg:#333333"
+truncate_to_repo = true
 truncation_length = 3
-truncation_symbol = "…/"
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+fish_style_pwd_dir_length = 1
 
 [git_branch]
-symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+format = "[ on](fg:#7a7a7a bg:#333333)[ 󰊤 󰘬]($style)[ $branch(:$remote_branch) ]($style)"
+style = "fg:#00dd00 bg:#333333"
+
+[git_metrics]
+added_style = "fg:#c4c41c bg:#333333"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
+format = "([+$added]($added_style))[]($added_style)"
 
 [git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+ahead = "⇡$count"
+behind = "⇣$count"
+diverged = "⇡$ahead_count⇣$behind_count"
+format = "[$all_status$ahead_behind ]($style)"
+modified = "[!$count ](fg:#c4b51e bg:#333333)"
+style = "fg:#c4b51e bg:#333333"
+untracked = "[?$count ](fg:#00afff bg:#333333)"
 
-[nodejs]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+[hg_branch]
+format = "[ $symbol$branch ]($style)"
+symbol = " "
 
-[rust]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[php]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[time]
+[status]
 disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+format = "[ $signal_name $symbol ]($style)"
+map_symbol = true
+style = "bg:#333333"
+success_symbol = "[✔](fg:green bg:#333333)"
+symbol = "[✘](fg:#d60202 bg:#444444)"
