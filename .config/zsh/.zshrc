@@ -9,6 +9,8 @@ fi
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
 autoload -Uz compinit && compinit
 
+export NVIM_PROFILE="private"
+
 HISTSIZE=10000
 SAVEHIST=10000
 setopt append_history
@@ -52,7 +54,26 @@ alias vim="nvim"
 alias v="nvim"
 alias c="clear"
 
+# eza-ls alias
+# https://gist.github.com/AppleBoiy/04a249b6f64fd0fe1744aff759a0563b
+alias ls='eza --color=always --group-directories-first --icons'
+alias ll='eza -la --icons --octal-permissions --group-directories-first'
+alias l='eza -bGF --header --git --color=always --group-directories-first --icons'
+alias la='eza --long --all --group --group-directories-first'
+alias lS='eza -1 --color=always --group-directories-first --icons'
+alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
+
 eval "$(sheldon source)"
+
+# yazi wrapper
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
