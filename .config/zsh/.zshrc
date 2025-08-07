@@ -9,6 +9,7 @@ fi
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
 autoload -Uz compinit && compinit
 
+# switch machine type for nvim config
 export NVIM_PROFILE="private"
 
 HISTSIZE=10000
@@ -74,6 +75,11 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/fuchami/.lmstudio/bin"
+# End of LM Studio CLI section
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
