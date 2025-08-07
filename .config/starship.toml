@@ -1,3 +1,5 @@
+# reference: https://github.com/starship/starship/discussions/1107#discussioncomment-7554693
+
 format = """
 [ ](bg:#333333)$os[ ](fg:#7a7a7a bg:#333333)\
 $directory\
@@ -25,12 +27,6 @@ format = "[](fg:#7a7a7a bg:#333333)[ $symbol ]($style)"
 style = "fg:#7a7a7a bg:#333333"
 symbol = "[▼](fg:white bg:#333333)"
 when = "test \"$DIRENV_WATCHES\" != \"\""
-
-[custom.vim_shell]
-format = "[](fg:#7a7a7a bg:#333333)[ $symbol ]($style)"
-style = "fg:#7a7a7a bg:#333333"
-symbol = "[](fg:green bg:#333333)"
-when = "test \"$VIMRUNTIME\" != \"\""
 
 [directory]
 format = "[  $path ]($style)"
