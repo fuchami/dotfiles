@@ -80,8 +80,6 @@ function y() {
 export PATH="$PATH:/Users/fuchami/.lmstudio/bin"
 # End of LM Studio CLI section
 
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
-
 . "$HOME/.local/bin/env"
+
+eval "$(starship init zsh)"
