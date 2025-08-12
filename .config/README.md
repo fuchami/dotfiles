@@ -1,16 +1,24 @@
 # dotfiles
 
-## yadm
+[yadm](https://yadm.io/)を使ってdotfilesを管理
 
-dotfilesはyadmを使って管理。
+## Setup
 
-### Usage
+> [!NOTE]
+> [yadm bootstrap](https://yadm.io/docs/bootstrap#) を使ってコマンド実行量を減らす
 
-```
-# invoke lazygit
-$ yadm enter lazygit
-
-```
+1. Install [Homebrew](https://brew.sh/)
+2. Install gh,yadm
+  ```sh
+  $ brew install gh yadm
+  $ gh auth login # chose SSH, other chose yes.
+  ```
+3. brew bundle --global
+4. Reboot
+5. Change google-japanese ime
+6. Launch essential Application
+  - karabiner-elements, Rectangle, Clipy, hammerspoon
+  - `defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"`
 
 ## Zsh
 
@@ -24,6 +32,12 @@ ZDOTDIR=$HOME/.config/zsh
 
 AstroNvimを利用しており、別リポジトリで管理している。
 
+### Maintenance
+
+```sh
+# invoke lazygit
+$ yadm enter lazygit
+```
 ---
 
 ## Referance
