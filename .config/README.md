@@ -14,9 +14,11 @@
   $ gh auth login # chose SSH, other chose yes.
   ```
 3. brew bundle --global
-4. Reboot
-5. Change google-japanese ime
-6. Launch essential Application
+  - 不要なpackageは消す
+5. Reboot
+6. Change google-japanese ime
+  - 空白を半角に
+7. Launch essential Application
   - karabiner-elements, Rectangle, Clipy, hammerspoon
   - `defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"`
 
