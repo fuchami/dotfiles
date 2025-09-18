@@ -5,8 +5,8 @@ autoload -Uz compinit && compinit
 # switch machine type for nvim config
 export NVIM_PROFILE="private"
 
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=50000
+SAVEHIST=50000
 setopt append_history
 setopt share_history
 setopt hist_ignore_all_dups
