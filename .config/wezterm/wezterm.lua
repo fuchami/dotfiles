@@ -12,11 +12,11 @@ config.color_scheme = "iceberg-dark"
 config.initial_cols = 160
 config.initial_rows = 50
 
-config.text_background_opacity = 0.75
-config.window_background_opacity = 0.65
+config.text_background_opacity = 0.8
+config.window_background_opacity = 0.8
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.window_decorations = "TITLE"
-config.macos_window_background_blur = 5
+config.macos_window_background_blur = 10
 
 -- Font settings
 config.font = wezterm.font_with_fallback({
@@ -100,8 +100,6 @@ tabline.setup({
 				icons_only = true,
 				padding = { left = 1, right = 1 },
 			},
-			{ "parent", max_length = 10, padding = { left = 0, right = 0 } },
-			"/",
 			{ "cwd", max_length = 50, padding = { left = 0, right = 1 } },
 		},
 	},

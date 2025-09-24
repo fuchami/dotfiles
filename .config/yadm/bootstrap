@@ -1,0 +1,30 @@
+#!/bin/sh
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+
+  if [ -f "$HOME/.Brewfile" ]; then
+    echo "Updating homebrew bundle"
+    brew bundle --global
+
+    # set hammerspoon XDG config
+    defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+
+  fi
+
+  # clone AstroNvim Config
+  git clone git@github.com:fuchami/astronvim_config.git ~/.config/nvim
+
+  # setup zsh
+  echo 'export ZDOTDIR="$HOME"/.config/zsh' | sudo tee -a /etc/zshenv
+  # history file
+  mkdir -p ~/.local/state/zsh && touch mkdir ~/.local/state/zsh/history
+
+fi
