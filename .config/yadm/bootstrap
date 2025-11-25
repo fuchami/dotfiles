@@ -16,7 +16,11 @@ if [ "$system_type" = "Darwin" ]; then
 
     # set hammerspoon XDG config
     defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+  fi
 
+  if [[ "$(id -u -n)" == *"fuchami"*]]; then
+    echo "Bundle Private Brewfile"
+    brew bundle --file=~/.Brewfile.private
   fi
 
   # clone AstroNvim Config
