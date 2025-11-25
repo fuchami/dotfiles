@@ -1,0 +1,8 @@
+cask "gcloud-cli"
+cask "docker-desktop"
+cask "discord"
+cask "lm-studio"
+cask "readdle-spark"
+cask "slack"
+cask "spotify"
+cask "zoom"
