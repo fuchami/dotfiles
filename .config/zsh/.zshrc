@@ -17,20 +17,6 @@ source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
-# aliase
-alias vim="nvim"
-alias v="nvim"
-
-# eza-ls alias
-# https://gist.github.com/AppleBoiy/04a249b6f64fd0fe1744aff759a0563b
-alias ls='eza --color=always --group-directories-first --icons'
-alias ll='eza -la --icons --octal-permissions --group-directories-first'
-alias l='eza -bGF --header --git --color=always --group-directories-first --icons'
-alias la='eza --long --all --group --group-directories-first'
-alias lS='eza -1 --color=always --group-directories-first --icons'
-alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
-
-
 # yazi wrapper
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

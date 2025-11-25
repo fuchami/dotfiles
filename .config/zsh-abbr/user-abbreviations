@@ -1,0 +1,12 @@
+abbr g="git"
+abbr vim="nvim"
+abbr v="nvim"
+
+# eza-ls alias
+# https://gist.github.com/AppleBoiy/04a249b6f64fd0fe1744aff759a0563b
+abbr ls='eza --color=always --group-directories-first --icons'
+abbr ll='eza -la --icons --octal-permissions --group-directories-first'
+abbr l='eza -bGF --header --git --color=always --group-directories-first --icons'
+abbr la='eza --long --all --group --group-directories-first'
+abbr lS='eza -1 --color=always --group-directories-first --icons'
+abbr lt='eza --tree --level=2 --color=always --group-directories-first --icons'

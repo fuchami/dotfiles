@@ -35,3 +35,6 @@ github = "zsh-users/zsh-autosuggestions"
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 apply = ["defer"]
+
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
