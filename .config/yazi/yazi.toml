@@ -2,3 +2,6 @@
 edit = [
 	{ run = 'nvim "$@"', desc = "$EDITOR", block = true, for = "unix" },
 ]
+
+[mgr]
+  show_hidden = true

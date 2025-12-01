@@ -33,8 +33,12 @@ export PATH="$PATH:/Users/fuchami/.lmstudio/bin"
 
 . "$HOME/.local/bin/env"
 
+# for Rancher Desktop Docker CLI
+export PATH="$HOME/.rd/bin:$PATH"
+
 autoload -Uz compinit && compinit
 
+eval "$(zoxide init zsh)"
 eval "$(sheldon source)"
-eval "$(starship init zsh)"
-# eval "$(oh-my-posh init zsh --config ~/.config/omp/config.json)"
+# eval "$(starship init zsh)"
+eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/mytheme.omp.yaml)"

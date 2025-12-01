@@ -2,6 +2,8 @@ abbr g="git"
 abbr vim="nvim"
 abbr v="nvim"
 
+abbr cd="z"
+
 # eza-ls alias
 # https://gist.github.com/AppleBoiy/04a249b6f64fd0fe1744aff759a0563b
 abbr ls='eza --color=always --group-directories-first --icons'
