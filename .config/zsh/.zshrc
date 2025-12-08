@@ -1,4 +1,3 @@
-# set dotconfig
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
 HISTSIZE=50000
 SAVEHIST=50000
@@ -7,7 +6,6 @@ setopt share_history
 setopt hist_ignore_all_dups
 
 bindkey -e
-source <(fzf --zsh)
 
 # For google-cloud-sdk
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
@@ -27,18 +25,9 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/fuchami/.lmstudio/bin"
-# End of LM Studio CLI section
-
 . "$HOME/.local/bin/env"
-
-# for Rancher Desktop Docker CLI
-export PATH="$HOME/.rd/bin:$PATH"
 
 autoload -Uz compinit && compinit
 
-eval "$(zoxide init zsh)"
 eval "$(sheldon source)"
-# eval "$(starship init zsh)"
 eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/mytheme.omp.yaml)"

@@ -19,6 +19,12 @@ shell = "zsh"
 # [plugins.base16]
 # github = "chriskempson/base16-shell"
 
+[plugins.fzf]
+inline = "source <(fzf --zsh)"
+
+[plugins.zoxide]
+inline = 'eval "$(zoxide init zsh)"'
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
