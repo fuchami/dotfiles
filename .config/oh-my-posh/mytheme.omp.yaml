@@ -90,7 +90,7 @@ blocks:
         foreground: "#42e66c"
         foreground_templates:
           - "{{ if gt .Code 0 }}#FF5252{{ end }}"
-        template: "❯ "
+        template: "❯"
         properties:
           always_enabled: true
     newline: true
