@@ -36,77 +36,15 @@ config.scrollback_lines = 5000000
 -- Enable hyperlinks
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
--- tmux-like keybindings
-local act = wezterm.action
+-- keybinds
 config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
-config.keys = {
-	{ key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
-	{ key = "q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
-	{ key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
-	{ key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
-	{ key = "w", mods = "LEADER", action = act.ShowTabNavigator },
-	{ key = "|", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
-	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
-	{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
-	{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
-	{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
-	{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-	{ key = "H", mods = "LEADER", action = act.AdjustPaneSize({ "Left", 10 }) },
-	{ key = "L", mods = "LEADER", action = act.AdjustPaneSize({ "Right", 10 }) },
-	{ key = "K", mods = "LEADER", action = act.AdjustPaneSize({ "Up", 5 }) },
-	{ key = "J", mods = "LEADER", action = act.AdjustPaneSize({ "Down", 5 }) },
-}
+config.keys = require("keybinds").keys
+config.key_tables = require("keybinds").key_tables
 
--- Plugin: Tabline configuration
+-- tabline
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
-
-tabline.setup({
-	options = {
-		theme = "catppuccin-mocha",
-		section_separators = {
-			left = wezterm.nerdfonts.ple_upper_left_triangle,
-			right = wezterm.nerdfonts.ple_upper_right_triangle,
-		},
-		component_separators = {
-			left = wezterm.nerdfonts.ple_forwardslash_separator,
-			right = wezterm.nerdfonts.ple_forwardslash_separator,
-		},
-		tab_separators = {
-			left = wezterm.nerdfonts.ple_lower_left_triangle,
-			right = wezterm.nerdfonts.ple_lower_right_triangle,
-		},
-	},
-	sections = {
-		tabline_a = { " 󰰮 " },
-		tabline_b = { "mode" },
-		tabline_c = {},
-		tab_active = {
-			{ "index", padding = 0 },
-			{
-				"process",
-				icons_only = true,
-				padding = { left = 1, right = 0 },
-			},
-			{ "parent", max_length = 15, padding = { left = 0, right = 0 } },
-			"/",
-			{ "cwd", max_length = 30, padding = { left = 0, right = 2 } },
-		},
-		tab_inactive = {
-			{ "index", padding = 0 },
-			{
-				"process",
-				icons_only = true,
-				padding = { left = 1, right = 1 },
-			},
-			{ "cwd", max_length = 50, padding = { left = 0, right = 1 } },
-		},
-	},
-	extensions = {
-		"resurrect",
-	},
-})
+local tabline_config = require("tabline")
+tabline.setup(tabline_config)
 tabline.apply_to_config(config)
 
 return config
