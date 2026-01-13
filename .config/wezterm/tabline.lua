@@ -2,9 +2,12 @@ local wezterm = require("wezterm")
 
 return {
 	options = {
+		icons_enabled = true,
 		theme = "catppuccin-mocha",
 		theme_overrides = {
-			tab = {},
+			tab = {
+				-- active = { fg = "#181818", bg = "#9F7AEA" },
+			},
 		},
 		section_separators = {
 			left = wezterm.nerdfonts.ple_upper_left_triangle,
@@ -20,28 +23,30 @@ return {
 		},
 	},
 	sections = {
-		tabline_a = { " 󰰮 " },
-		tabline_b = { "mode" },
+		tabline_a = { " 󰰮 ", "mode" },
+		tabline_b = { "workspace" },
 		tabline_c = {},
 		tab_active = {
-			{ "index", padding = 0 },
+			"index",
 			{
 				"process",
 				icons_only = true,
 				padding = { left = 1, right = 0 },
 			},
-			{ "parent", max_length = 15, padding = { left = 0, right = 0 } },
+			{ "parent", padding = 0 },
 			"/",
-			{ "cwd", max_length = 30, padding = { left = 0, right = 2 } },
+			{ "cwd", padding = { left = 0, right = 1 } },
+			max_length = 15,
 		},
 		tab_inactive = {
-			{ "index", padding = 0 },
+			"index",
 			{
 				"process",
 				icons_only = true,
-				padding = { left = 1, right = 1 },
+				padding = 0,
 			},
-			{ "cwd", max_length = 50, padding = { left = 0, right = 1 } },
+			{ "cwd", padding = { left = 0, right = 1 } },
+			max_length = 10,
 		},
 	},
 	extensions = {
