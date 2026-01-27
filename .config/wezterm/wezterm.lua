@@ -44,4 +44,12 @@ local tabline_config = require("tabline")
 tabline.setup(tabline_config)
 tabline.apply_to_config(config)
 
+-- smart-splits plugin
+local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
+smart_splits.apply_to_config(config, {
+	modifiers = {
+		resize = "META|CTRL",
+	},
+})
+
 return config

@@ -8,6 +8,11 @@ return {
 			tab = {
 				active = { fg = "#111111", bg = "#c4a000" },
 			},
+			resize_mode = {
+				a = { fg = "#181825", bg = "#fab387" },
+				b = { fg = "#cba6f7", bg = "#313244" },
+				c = { fg = "#cdd6f4", bg = "#181825" },
+			},
 		},
 		section_separators = {
 			-- left = wezterm.nerdfonts.ple_upper_left_triangle,
@@ -27,11 +32,29 @@ return {
 		},
 	},
 	sections = {
-		tabline_a = { " 󰰮 ", "mode" },
+		tabline_a = {
+			" 󰰮 ",
+			{
+				"mode",
+				icons_enabled = true,
+				fmt = function(mode, window)
+					if window:leader_is_active() then
+						return "LEADER"
+					end
+
+					local name = window:active_key_table()
+					if name then
+						return name:gsub("_mode", ""):upper()
+					end
+
+					return mode
+				end,
+			},
+		},
 		tabline_b = {},
 		tabline_c = {},
 		tab_active = {
-			{ "index", padding = 1 },
+			{ "index",  padding = 1 },
 			{
 				"process",
 				icons_only = true,
