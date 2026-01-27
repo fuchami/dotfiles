@@ -19,28 +19,44 @@ shell = "zsh"
 # [plugins.base16]
 # github = "chriskempson/base16-shell"
 
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+PATH = 'export PATH="$PATH:{{ dir }}"'
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
 [plugins.fzf]
 inline = "source <(fzf --zsh)"
 
 [plugins.zoxide]
 inline = 'eval "$(zoxide init zsh)"'
 
-[plugins.zsh-defer]
-github = "romkatv/zsh-defer"
-
-[templates]
-defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
-PATH = 'export PATH="$PATH:{{ dir }}"'
-
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
+
+[plugins.terraform-completion]
+inline = '''
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+'''
+
+[plugins.gcloud-sdk]
+inline = '''
+if [ -f "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" ]; then
+    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
+'''
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
+apply = ["defer"]
+
+
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 apply = ["defer"]
-
-[plugins.zsh-abbr]
-github = "olets/zsh-abbr"

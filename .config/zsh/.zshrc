@@ -1,19 +1,9 @@
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
-HISTSIZE=50000
-SAVEHIST=50000
 setopt append_history
 setopt share_history
 setopt hist_ignore_all_dups
+setopt hist_reduce_blanks
 
 bindkey -e
-
-# For google-cloud-sdk
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-# terraform
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 # yazi wrapper
 function y() {
@@ -25,9 +15,8 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-. "$HOME/.local/bin/env"
+[[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
 
 autoload -Uz compinit && compinit
-
 eval "$(sheldon source)"
 eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/mytheme.omp.yaml)"
