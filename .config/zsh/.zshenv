@@ -9,8 +9,3 @@ export XDG_CACHE_HOME=$HOME/.cache/
 
 ### zsh (same config is written in /etc/zshenv for macOS)
 export ZDOTDIR="$HOME"/.config/zsh
-
-### zshrc specific
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
-HISTSIZE=50000
-SAVEHIST=50000
