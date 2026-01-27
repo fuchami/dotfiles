@@ -7,10 +7,5 @@ export XDG_DATA_HOME=$HOME/.local/share/
 export XDG_STATE_HOME=$HOME/.local/state/
 export XDG_CACHE_HOME=$HOME/.cache/
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/fuchami/.lmstudio/bin"
-# for Rancher Desktop Docker CLI
-export PATH="$HOME/.rd/bin:$PATH"
-
 ### zsh (same config is written in /etc/zshenv for macOS)
 export ZDOTDIR="$HOME"/.config/zsh
