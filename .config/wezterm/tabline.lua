@@ -2,7 +2,6 @@ local wezterm = require("wezterm")
 
 local M = {}
 
--- setupなどの関数を定義
 function M.create_config(color_scheme)
 	local scheme = wezterm.color.get_builtin_schemes()[color_scheme]
 
@@ -12,12 +11,12 @@ function M.create_config(color_scheme)
 			theme = color_scheme,
 			theme_overrides = {
 				tab = {
-					active = { fg = scheme.ansi[1], bg = scheme.ansi[6] },
+					active = { fg = scheme.ansi[1], bg = scheme.ansi[4] },
 				},
 				resize_mode = {
-					a = { fg = scheme.ansi[1], bg = scheme.ansi[3] },
-					b = { fg = scheme.ansi[1], bg = scheme.ansi[3] },
-					c = { fg = scheme.ansi[1], bg = scheme.ansi[3] },
+					a = { fg = scheme.ansi[1], bg = scheme.ansi[7] },
+					b = { fg = scheme.ansi[1], bg = scheme.ansi[0] },
+					c = { fg = scheme.ansi[1], bg = scheme.ansi[7] },
 				},
 			},
 			section_separators = {

@@ -23,4 +23,4 @@ function y() {
 
 autoload -Uz compinit && compinit
 eval "$(sheldon source)"
-eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/mytheme.omp.yaml)"
+eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/kanagawa.omp.toml)"

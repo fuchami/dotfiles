@@ -1,0 +1,156 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+tooltips_action = 'replace'
+version = 4
+final_space = true
+
+[palette]
+  bg = '#1f1f28'
+  fg = '#dcd7ba'
+  black = '#090618'
+  gray = '#727169'
+  red = '#C34043'
+  green = '#76946A'
+  yellow = '#e6c384'
+  blue = '#7E9CD8'
+  magenta = '#D27E99'
+  cyan = '#7AA89F'
+  orange = '#FFA066'
+
+[transient_prompt]
+  template = '❯ '
+  foreground = 'p:green'
+  background = 'transparent'
+
+[upgrade]
+  source = 'cdn'
+  interval = '168h'
+  auto = false
+  notice = false
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    template = ' {{.Icon}} <p:gray></>'
+    foreground = 'p:fg'
+    background = 'p:bg'
+    type = 'os'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    template = '  {{ .Path }} '
+    foreground = 'p:blue'
+    powerline_symbol = ''
+    background = 'p:bg'
+    type = 'path'
+    style = 'powerline'
+
+    [blocks.segments.options]
+      home_icon = '~'
+      style = 'full'
+
+  [[blocks.segments]]
+    template = ' {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+    foreground = '#000000'
+    powerline_symbol = ''
+    background = 'p:green'
+    type = 'git'
+    style = 'powerline'
+    background_templates = [
+      '{{ if or (.Working.Changed) (.Staging.Changed) }}p:yellow{{ end }}',
+      '{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:orange{{ end }}',
+      '{{ if gt .Ahead 0 }}p:cyan{{ end }}',
+      '{{ if gt .Behind 0 }}p:magenta{{ end }}'
+    ]
+
+    [blocks.segments.options]
+      branch_icon = '  '
+      fetch_status = true
+      fetch_upstream_icon = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+
+  [[blocks.segments]]
+    template = '  {{ if .Venv }}({{ .Venv }}) {{ end }}{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
+    foreground = 'p:black'
+    powerline_symbol = ''
+    background = 'p:cyan'
+    type = 'python'
+    style = 'powerline'
+    invert_powerline = true
+
+    [blocks.segments.options]
+      display_mode = 'files'
+      fetch_virtual_env = true
+
+  [[blocks.segments]]
+    template = ' {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }}  '
+    foreground = 'p:fg'
+    powerline_symbol = ''
+    type = 'aws'
+    style = 'powerline'
+    background_templates = [
+      '{{if contains "default" .Profile}}p:orange{{end}}',
+      '{{if contains "jan" .Profile}}p:red{{end}}'
+    ]
+    invert_powerline = true
+
+    [blocks.segments.options]
+      display_default = false
+  [[blocks.segments]]
+    template = '  '
+    foreground = 'p:black'
+    powerline_symbol = ''
+    background = 'p:yellow'
+    type = 'root'
+    style = 'powerline'
+    invert_powerline = true
+
+  [[blocks.segments]]
+    template = ' {{ .FormattedMs }}  '
+    foreground = 'p:gray'
+    powerline_symbol = ''
+    background = 'p:bg'
+    type = 'executiontime'
+    style = 'powerline'
+    invert_powerline = true
+
+  [[blocks.segments]]
+    template = ' {{ if gt .Code 0 }}{{ reason .Code }}{{ else }}<p:green></>{{ end }} '
+    foreground = 'p:fg'
+    powerline_symbol = ''
+    background = 'p:bg'
+    type = 'status'
+    style = 'powerline'
+    background_templates = ['{{ if gt .Code 0 }}p:red{{ end }}']
+    invert_powerline = true
+
+    [blocks.segments.options]
+      always_enabled = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '❯'
+    foreground = 'p:green'
+    type = 'status'
+    style = 'plain'
+    foreground_templates = ['{{ if gt .Code 0 }}p:red{{ end }}']
+
+    [blocks.segments.options]
+      always_enabled = true
+
+[[tooltips]]
+  template = '  {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} '
+  foreground = 'p:black'
+  powerline_symbol = ''
+  background = 'p:blue'
+  type = 'kubectl'
+  style = 'powerline'
+  tips = ['kubectl', 'kubectx', 'k', 'ktx']

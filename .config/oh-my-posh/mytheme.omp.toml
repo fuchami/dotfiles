@@ -1,0 +1,136 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+tooltips_action = 'replace'
+version = 3
+final_space = true
+
+[transient_prompt]
+  template = '❯ '
+  foreground = '#42e66c'
+  background = 'transparent'
+
+[upgrade]
+  source = 'cdn'
+  interval = '168h'
+  auto = false
+  notice = false
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    template = ' {{.Icon}} <#7a7a7a></>'
+    foreground = '#ffffff'
+    background = '#222222'
+    type = 'os'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    template = '  {{ .Path }} '
+    foreground = '#00afff'
+    powerline_symbol = ''
+    background = '#222222'
+    type = 'path'
+    style = 'powerline'
+
+    [blocks.segments.options]
+      home_icon = '~'
+      style = 'full'
+
+  [[blocks.segments]]
+    template = ' {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+    foreground = '#000000'
+    powerline_symbol = ''
+    background = '#00dd00'
+    type = 'git'
+    style = 'powerline'
+    background_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}#c4a000{{ end }}', '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#f26d50{{ end }}', '{{ if gt .Ahead 0 }}#89d1dc{{ end }}', '{{ if gt .Behind 0 }}#4e9a06{{ end }}']
+
+    [blocks.segments.options]
+      branch_icon = '  '
+      fetch_status = true
+      fetch_upstream_icon = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+
+  [[blocks.segments]]
+    template = '  {{ if .Venv }}({{ .Venv }}) {{ end }}{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
+    foreground = '#ffffff'
+    powerline_symbol = ''
+    background = '#3776AB'
+    type = 'python'
+    style = 'powerline'
+    invert_powerline = true
+
+    [blocks.segments.options]
+      display_mode = 'files'
+      fetch_virtual_env = true
+
+  [[blocks.segments]]
+    template = ' {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }}  '
+    foreground = '#ffffff'
+    powerline_symbol = ''
+    type = 'aws'
+    style = 'powerline'
+    background_templates = ['{{if contains "default" .Profile}}#FFA400{{end}}', '{{if contains "jan" .Profile}}#f1184c{{end}}']
+    invert_powerline = true
+
+    [blocks.segments.options]
+      display_default = false
+
+  [[blocks.segments]]
+    template = '  '
+    foreground = '#111111'
+    powerline_symbol = ''
+    background = '#ffff66'
+    type = 'root'
+    style = 'powerline'
+    invert_powerline = true
+
+  [[blocks.segments]]
+    template = ' {{ .FormattedMs }}  '
+    foreground = '#9b9b9b'
+    powerline_symbol = ''
+    background = '#222222'
+    type = 'executiontime'
+    style = 'powerline'
+    invert_powerline = true
+
+  [[blocks.segments]]
+    template = ' {{ if gt .Code 0 }}{{ reason .Code }}{{ else }}<#00dd00></>{{ end }} '
+    foreground = '#d3d7cf'
+    powerline_symbol = ''
+    background = '#222222'
+    type = 'status'
+    style = 'powerline'
+    background_templates = ['{{ if gt .Code 0 }}#cc2222{{ end }}']
+    invert_powerline = true
+
+    [blocks.segments.options]
+      always_enabled = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '❯'
+    foreground = '#42e66c'
+    type = 'status'
+    style = 'plain'
+    foreground_templates = ['{{ if gt .Code 0 }}#FF5252{{ end }}']
+
+    [blocks.segments.options]
+      always_enabled = true
+
+[[tooltips]]
+  template = '  {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} '
+  foreground = '#000000'
+  powerline_symbol = ''
+  background = '#4da6ff'
+  type = 'kubectl'
+  style = 'powerline'
+  tips = ['kubectl', 'kubectx', 'k', 'ktx']

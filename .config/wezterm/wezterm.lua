@@ -7,7 +7,8 @@ config.automatically_reload_config = true
 config.use_ime = true
 
 -- theme
-local color_scheme = "kanagawabones"
+-- local color_scheme = "kanagawabones"
+local color_scheme = "Kanagawa (Gogh)"
 config.color_scheme = color_scheme
 
 -- Window
@@ -40,7 +41,7 @@ config.font = wezterm.font_with_fallback({
 })
 
 -- buffer
-config.scrollback_lines = 5000000
+config.scrollback_lines = 100000
 
 -- Enable hyperlinks
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
