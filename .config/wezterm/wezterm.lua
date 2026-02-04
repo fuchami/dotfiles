@@ -7,17 +7,29 @@ config.automatically_reload_config = true
 config.use_ime = true
 
 -- theme
-config.color_scheme = "iceberg-dark"
+local color_scheme = "kanagawabones"
+config.color_scheme = color_scheme
 
 -- Window
 config.initial_cols = 160
 config.initial_rows = 50
 
-config.text_background_opacity = 0.8
-config.window_background_opacity = 0.8
 config.macos_window_background_blur = 10
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.window_decorations = "TITLE"
+
+wezterm.on("toggle-opacity", function(window, _)
+	local overrides = window:get_config_overrides() or {}
+
+	if not overrides.window_background_opacity then
+		overrides.window_background_opacity = 0.75
+		overrides.text_background_opacity = 0.75
+	else
+		overrides.window_background_opacity = nil
+		overrides.text_background_opacity = nil
+	end
+	window:set_config_overrides(overrides)
+end)
 
 -- Font settings
 config.font_size = 16
@@ -41,7 +53,7 @@ config.key_tables = require("keybinds").key_tables
 -- tabline plugin
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 local tabline_config = require("tabline")
-tabline.setup(tabline_config)
+tabline.setup(tabline_config.create_config(color_scheme))
 tabline.apply_to_config(config)
 
 -- smart-splits plugin
