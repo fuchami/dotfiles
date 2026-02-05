@@ -15,7 +15,7 @@ config.color_scheme = color_scheme
 config.initial_cols = 160
 config.initial_rows = 50
 
-config.macos_window_background_blur = 10
+config.macos_window_background_blur = 2
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.window_decorations = "TITLE"
 
@@ -24,7 +24,7 @@ wezterm.on("toggle-opacity", function(window, _)
 
 	if not overrides.window_background_opacity then
 		overrides.window_background_opacity = 0.75
-		overrides.text_background_opacity = 0.75
+		overrides.text_background_opacity = 0.7
 	else
 		overrides.window_background_opacity = nil
 		overrides.text_background_opacity = nil

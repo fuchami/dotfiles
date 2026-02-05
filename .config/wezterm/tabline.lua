@@ -1,5 +1,26 @@
 local wezterm = require("wezterm")
 
+local function pane_info(tab)
+	local mux_tab = wezterm.mux.get_tab(tab.tab_id)
+	local panes = mux_tab:panes()
+	local active_pane = mux_tab:active_pane()
+	local total_panes = #panes
+
+	if total_panes == 1 then
+		return " "
+	end
+
+	local active_index = 1
+	for i, pane in ipairs(panes) do
+		if pane:pane_id() == active_pane:pane_id() then
+			active_index = i
+			break
+		end
+	end
+
+	return string.format("[%d/%d] ", active_index, total_panes)
+end
+
 local M = {}
 
 function M.create_config(color_scheme)
@@ -11,7 +32,7 @@ function M.create_config(color_scheme)
 			theme = color_scheme,
 			theme_overrides = {
 				tab = {
-					active = { fg = scheme.ansi[1], bg = scheme.ansi[4] },
+					active = { fg = scheme.ansi[1], bg = scheme.ansi[6] },
 				},
 				resize_mode = {
 					a = { fg = scheme.ansi[1], bg = scheme.ansi[7] },
@@ -20,20 +41,16 @@ function M.create_config(color_scheme)
 				},
 			},
 			section_separators = {
-				-- left = wezterm.nerdfonts.ple_upper_left_triangle,
-				-- right = wezterm.nerdfonts.ple_upper_right_triangle,
-				left = "",
-				right = "",
+				left = wezterm.nerdfonts.ple_upper_left_triangle,
+				right = wezterm.nerdfonts.ple_upper_right_triangle,
 			},
 			component_separators = {
 				left = wezterm.nerdfonts.pl_left_soft_divider,
 				right = wezterm.nerdfonts.pl_left_soft_divider,
 			},
 			tab_separators = {
-				-- left = wezterm.nerdfonts.ple_lower_left_triangle,
-				-- right = wezterm.nerdfonts.ple_lower_right_triangle,
-				left = "",
-				right = "",
+				left = wezterm.nerdfonts.ple_upper_left_triangle,
+				right = wezterm.nerdfonts.ple_lower_right_triangle,
 			},
 		},
 		sections = {
@@ -64,6 +81,7 @@ function M.create_config(color_scheme)
 			tabline_c = {},
 			tab_active = {
 				{ "index", padding = 1 },
+				pane_info,
 				{
 					"process",
 					icons_only = true,
