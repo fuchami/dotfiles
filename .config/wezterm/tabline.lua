@@ -36,8 +36,8 @@ function M.create_config(color_scheme)
 				},
 				resize_mode = {
 					a = { fg = scheme.ansi[1], bg = scheme.ansi[7] },
-					b = { fg = scheme.ansi[1], bg = scheme.ansi[0] },
-					c = { fg = scheme.ansi[1], bg = scheme.ansi[7] },
+					b = { fg = scheme.foreground, bg = scheme.background },
+					c = { fg = scheme.foreground, bg = scheme.background },
 				},
 			},
 			section_separators = {
@@ -80,7 +80,7 @@ function M.create_config(color_scheme)
 			tabline_b = {},
 			tabline_c = {},
 			tab_active = {
-				{ "index", padding = 1 },
+				{ "index",  padding = 1 },
 				pane_info,
 				{
 					"process",
@@ -102,10 +102,9 @@ function M.create_config(color_scheme)
 			},
 			tabline_x = { "ram", "cpu" },
 			tabline_y = {},
+			tabline_z = { "domain" },
 		},
-		extensions = {
-			"resurrect",
-		},
+		extensions = {},
 	}
 end
 
