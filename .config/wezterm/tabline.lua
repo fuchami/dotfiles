@@ -55,7 +55,7 @@ function M.create_config(color_scheme)
 		},
 		sections = {
 			tabline_a = {
-				" 󰰮 ",
+				" " .. wezterm.nerdfonts.md_alpha_w_circle .. " ",
 				{
 					"mode",
 					icons_enabled = true,
