@@ -3,6 +3,7 @@ abbr lg='lazygit'
 abbr vim="nvim"
 abbr v="nvim"
 abbr c="clear"
+abbr yg="yadm enter lazygit"
 
 abbr cd="z"
 
