@@ -23,8 +23,8 @@ wezterm.on("toggle-opacity", function(window, _)
 	local overrides = window:get_config_overrides() or {}
 
 	if not overrides.window_background_opacity then
-		overrides.window_background_opacity = 0.75
-		overrides.text_background_opacity = 0.8
+		overrides.window_background_opacity = 0.9
+		-- overrides.text_background_opacity = 0.8
 	else
 		overrides.window_background_opacity = nil
 		overrides.text_background_opacity = nil
