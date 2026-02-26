@@ -62,3 +62,8 @@ apply = ["defer"]
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 apply = ["defer"]
+
+[plugins.functions]
+local = "~/.config/zsh/functions/"
+use = ["*.zsh"]
+apply = ["source"]

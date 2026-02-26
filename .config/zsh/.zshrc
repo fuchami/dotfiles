@@ -9,16 +9,6 @@ setopt hist_reduce_blanks
 
 bindkey -e
 
-# yazi wrapper
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
-
 [[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
 
 autoload -Uz compinit && compinit
