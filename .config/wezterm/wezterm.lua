@@ -6,10 +6,8 @@ local config = wezterm.config_builder()
 config.automatically_reload_config = true
 config.use_ime = true
 
--- theme
--- local color_scheme = "kanagawabones"
-local color_scheme = "Kanagawa (Gogh)"
-config.color_scheme = color_scheme
+-- color theme
+config.color_scheme = "Kanagawa (Gogh)"
 
 -- Window
 config.initial_cols = 160
@@ -48,21 +46,11 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 -- keybinds
 config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
-config.keys = require("keybinds").keys
-config.key_tables = require("keybinds").key_tables
+local keybinds = require("keybinds")
+keybinds.apply_to_config(config)
 
--- tabline plugin
-local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
-local tabline_config = require("tabline")
-tabline.setup(tabline_config.create_config(color_scheme))
-tabline.apply_to_config(config)
-
--- smart-splits plugin
-local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
-smart_splits.apply_to_config(config, {
-	modifiers = {
-		resize = "META|CTRL",
-	},
-})
+-- plugins
+require("plugins.tabline").apply_to_config(config)
+require("plugins.smart_splits").apply_to_config(config)
 
 return config
