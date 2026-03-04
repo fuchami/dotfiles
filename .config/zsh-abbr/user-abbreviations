@@ -1,11 +1,7 @@
-abbr g="git"
-abbr lg='lazygit'
-abbr vim="nvim"
-abbr v="nvim"
-abbr c="clear"
-abbr yg="yadm enter lazygit"
-
 abbr cd="z"
+abbr cat="bat"
+abbr grep="rg"
+abbr find="fd"
 
 # lsd
 abbr ls='lsd'
@@ -13,3 +9,11 @@ abbr l='lsd -l'
 abbr la='lsd -a'
 abbr lla='lsd -la'
 abbr lt='lsd --tree'
+
+abbr c="clear"
+abbr g="git"
+abbr vim="nvim"
+abbr v="nvim"
+abbr lg='lazygit'
+abbr yg="yadm enter lazygit"
+
