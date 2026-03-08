@@ -1,0 +1,50 @@
+snippets:
+  # snippet and keyword abbrev
+  # Alternatives Commands
+  - name: cd convert zoxide
+    keyword: cd
+    snippet: z
+  - name: cat to bat
+    keyword: cat
+    snippet: bat
+  - name: grep to ripgrep
+    keyword: grep
+    snippet: rg
+  - name: find to fd
+    keyword: find
+    snippet: fd
+  # lsd
+  - name: ls to lds
+    keyword: ls
+    snippet: lsd
+  - name: lsd
+    keyword: l
+    snippet: lsd -l
+  - name: lsd
+    keyword: la
+    snippet: lsd -a
+  - name: lsd
+    keyword: lla
+    snippet: lsd -la
+  - name: lsd tree
+    keyword: lsd --tree
+    snippet: lt
+  # others
+  - name: clear terminal
+    keyword: c
+    snippet: clear
+  - name: git
+    keyword: g
+    snippet: git
+  - name: vim to neovim
+    keyword: vim
+    snippet: neovim
+  - name: nvim
+    keyword: v
+    snippet: nvim
+  - name: lazygit
+    keyword: lg
+    snippet: lazygit
+  - name: yadm enter lazygit
+    keyword: yg
+    snippet: yadm enter lazygit
