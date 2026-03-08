@@ -15,7 +15,7 @@ dotfilesは[yadm](https://yadm.io/)を使って管理しています。
 3. exec `yadm bootstrap`
 5. Reboot
 6. add `etc/zshenv`
-  ```etc/zshenv
+  ```sh
   ZDOTDIR=$HOME/.config/zsh
   ```
 6. Change google-japanese ime
@@ -27,6 +27,8 @@ dotfilesは[yadm](https://yadm.io/)を使って管理しています。
 
 ```sh
 # invoke lazygit
+$ yg 
+or
 $ yadm enter lazygit
 ```
 ---

@@ -33,7 +33,6 @@ inline = 'eval "$(zoxide init zsh)"'
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
-apply = ["defer"]
 
 [plugins.terraform-completion]
 inline = '''
@@ -41,12 +40,26 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 '''
 
+[plugins.zeno]
+github = "yuki-yano/zeno.zsh"
+
+[plugins.zeno-sh]
+local = "~/.config/zeno/"
+use = ["*.zsh"]
+
+[plugins.functions]
+local = "~/.config/zsh/functions/"
+use = ["*.zsh"]
+
+[plugins.oh-my-posh]
+inline = 'eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/kanagawa.omp.toml)"'
+
 [plugins.gcloud-sdk]
 inline = '''
 brew_prefix="$(brew --prefix)"
 if [ -f "$brew_prefix/share/google-cloud-sdk/path.zsh.inc" ]; then
-  source "$brew_prefix/share/google-cloud-sdk/path.zsh.inc"
-  source "$brew_prefix/share/google-cloud-sdk/completion.zsh.inc"
+  zsh-defer source "$brew_prefix/share/google-cloud-sdk/path.zsh.inc"
+  zsh-defer source "$brew_prefix/share/google-cloud-sdk/completion.zsh.inc"
 fi
 '''
 
@@ -54,16 +67,6 @@ fi
 github = "zsh-users/zsh-autosuggestions"
 apply = ["defer"]
 
-[plugins.zsh-abbr]
-github = "olets/zsh-abbr"
+[plugins.fast-syntax-highlighting]
+github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
-
-
-[plugins.zsh-syntax-highlighting]
-github = "zsh-users/zsh-syntax-highlighting"
-apply = ["defer"]
-
-[plugins.functions]
-local = "~/.config/zsh/functions/"
-use = ["*.zsh"]
-apply = ["source"]
