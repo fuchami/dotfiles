@@ -23,6 +23,14 @@ template = "kanagawa_wave"
   white = '#c8c093'
   orange = '#ff9e64'
 
+  alt_green = '#76946a'
+  alt_yellow = '#c0a36e'
+  alt_red = '#e82424'
+  alt_blue = '#7fb4ca'
+  alt_magenta = '#938aa9'
+  alt_cyan = '#7aa89f'
+
+
 [transient_prompt]
   template = '❯ '
   foreground = 'p:green'
@@ -55,7 +63,7 @@ template = "kanagawa_wave"
 
     [blocks.segments.options]
       home_icon = '~'
-      style = 'full'
+      style = 'mixed' # full
 
   [[blocks.segments]]
     template = ' {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
@@ -107,6 +115,7 @@ template = "kanagawa_wave"
 
     [blocks.segments.options]
       display_default = false
+
   [[blocks.segments]]
     template = '  '
     foreground = 'p:black'
