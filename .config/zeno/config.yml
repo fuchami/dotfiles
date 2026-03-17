@@ -48,3 +48,8 @@ snippets:
   - name: yadm enter lazygit
     keyword: yg
     snippet: yadm enter lazygit
+history:
+  fzfOptions:
+    - "--preview-window=hidden"
+  keymap:
+    togglePreview: ? # プレビューウィンドウの表示切替
