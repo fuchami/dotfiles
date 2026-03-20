@@ -4,24 +4,15 @@ dotfilesは[yadm](https://yadm.io/)を使って管理しています。
 
 ## Setup
 
-1. Install [Homebrew](https://brew.sh/)
-2. Install gh,yadm
-  ```sh
-  $ brew install gh yadm
-  $ gh auth login # chose SSH, other chose yes.
+```sh
+# install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-  $ git clone git@github.com:fuchami/dotfiles.git
-  ```
-3. exec `yadm bootstrap`
-5. Reboot
-6. add `etc/zshenv`
-  ```sh
-  ZDOTDIR=$HOME/.config/zsh
-  ```
-6. Change google-japanese ime
-  - 空白を半角に
-7. Launch essential Application
-  - karabiner-elements
+# install minima tools (gh, yadm)
+brew install gh yadm
+gh auth login # chose SSH, other chose yes.
+yadm clone --bootstrap git@github.com:fuchami/dotfiles.git
+```
 
 ### Maintenance
 
@@ -31,6 +22,7 @@ $ yg
 or
 $ yadm enter lazygit
 ```
+
 ---
 
 ## Referance
