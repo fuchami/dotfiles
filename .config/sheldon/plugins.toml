@@ -18,27 +18,22 @@ shell = "zsh"
 #
 # [plugins.base16]
 # github = "chriskempson/base16-shell"
-[templates]
-defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
-PATH = 'export PATH="$PATH:{{ dir }}"'
 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
-[plugins.fzf]
-inline = "source <(fzf --zsh)"
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+PATH = 'export PATH="$PATH:{{ dir }}"'
 
 [plugins.zoxide]
 inline = 'eval "$(zoxide init zsh)"'
 
+[plugins.fzf]
+inline = "source <(fzf --zsh)"
+
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
-
-[plugins.terraform-completion]
-inline = '''
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
-'''
 
 [plugins.zeno]
 github = "yuki-yano/zeno.zsh"
@@ -46,6 +41,9 @@ github = "yuki-yano/zeno.zsh"
 [plugins.zeno-sh]
 local = "~/.config/zeno/"
 use = ["*.zsh"]
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
 
 [plugins.functions]
 local = "~/.config/zsh/functions/"

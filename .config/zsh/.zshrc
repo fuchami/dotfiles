@@ -1,4 +1,5 @@
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+
 HISTSIZE=50000
 SAVEHIST=50000
 
@@ -11,5 +12,4 @@ bindkey -e
 
 [[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
 
-autoload -Uz compinit && compinit
 eval "$(sheldon source)"
