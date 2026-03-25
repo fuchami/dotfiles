@@ -2,6 +2,8 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 tooltips_action = 'replace'
 version = 4
 final_space = true
+disable_notice = true
+auto_upgrade = false
 
 [palettes]
 template = "kanagawa_wave"
