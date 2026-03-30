@@ -5,3 +5,13 @@ edit = [
 
 [mgr]
   show_hidden = true
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*/"
+run = "git"
