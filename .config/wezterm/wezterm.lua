@@ -13,7 +13,7 @@ config.color_scheme = "Kanagawa (Gogh)"
 config.initial_cols = 160
 config.initial_rows = 50
 
-config.macos_window_background_blur = 2
+config.macos_window_background_blur = 5
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.window_decorations = "TITLE"
 
