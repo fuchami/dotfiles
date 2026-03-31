@@ -12,11 +12,9 @@ local keys = {
 	{ key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
 	{ key = "q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
 	{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
-
 	-- Pane作成
 	{ key = "|", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-
 	-- MovePane (ctrl + hjkl)
 	{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
 	{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
@@ -34,6 +32,9 @@ local keys = {
 
 	-- Toggle opacity
 	{ key = "o", mods = "LEADER", action = wezterm.action.EmitEvent("toggle-opacity") },
+
+	-- QuickSelect
+	{ key = " ", mods = "LEADER", action = wezterm.action.QuickSelect },
 }
 
 local key_tables = {
