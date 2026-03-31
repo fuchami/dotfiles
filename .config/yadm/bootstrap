@@ -13,9 +13,6 @@ if [ "$system_type" = "Darwin" ]; then
   if [ -f "$HOME/.Brewfile" ]; then
     echo "Updating homebrew bundle"
     brew bundle --global
-
-    # set hammerspoon XDG config
-    defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
   fi
 
   if [[ "$(id -u -n)" == *"fuchami"*]]; then
