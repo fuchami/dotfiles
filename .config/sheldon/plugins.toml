@@ -41,6 +41,7 @@ github = "yuki-yano/zeno.zsh"
 [plugins.zeno-sh]
 local = "~/.config/zeno/"
 use = ["*.zsh"]
+apply = ['source']
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
@@ -48,6 +49,7 @@ inline = 'autoload -Uz compinit && zsh-defer compinit'
 [plugins.functions]
 local = "~/.config/zsh/functions/"
 use = ["*.zsh"]
+apply = ['defer']
 
 [plugins.oh-my-posh]
 inline = 'eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/kanagawa.omp.toml)"'
