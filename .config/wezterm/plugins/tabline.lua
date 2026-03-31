@@ -1,5 +1,5 @@
-local wezterm = require("wezterm")
-local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+local wezterm = require("wezterm") ---@type Wezterm
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez") ---@type TablineWez
 local module = {}
 
 local function leader(window)
