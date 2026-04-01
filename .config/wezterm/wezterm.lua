@@ -5,6 +5,7 @@ local wezterm = require("wezterm") ---@type Wezterm
 local config = wezterm.config_builder()
 config.automatically_reload_config = true
 config.use_ime = true
+config.term = "wezterm"
 
 -- color theme
 config.color_scheme = "Kanagawa (Gogh)"
