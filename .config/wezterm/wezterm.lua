@@ -2,7 +2,7 @@
 local wezterm = require("wezterm") ---@type Wezterm
 
 -- This will hold the configuration.
-local config = wezterm.config_builder()
+local config = wezterm.config_builder() ---@type Config
 config.automatically_reload_config = true
 config.use_ime = true
 config.term = "wezterm"
@@ -47,8 +47,7 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 -- keybinds
 config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
-local keybinds = require("keybinds")
-keybinds.apply_to_config(config)
+require("keybinds").apply_to_config(config)
 
 -- plugins
 require("plugins.tabline").apply_to_config(config)
