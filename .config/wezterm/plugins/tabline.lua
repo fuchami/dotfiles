@@ -2,15 +2,18 @@ local wezterm = require("wezterm") ---@type Wezterm
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez") ---@type TablineWez
 local module = {}
 
-local function leader(window)
-	local icon
-	if window:leader_is_active() then
-		icon = wezterm.nerdfonts.md_alpha_w_circle_outline
-	else
-		icon = wezterm.nerdfonts.md_alpha_w_circle
+-- ref: https://github.com/michaelbrusegard/tabline.wez/issues/102#issuecomment-4063462724
+local mode_module = require("tabline.components.window.mode")
+if not mode_module._leader_override_applied then --only init once
+	local original_get = mode_module.get
+	mode_module.get = function(window)
+		if window:leader_is_active() then
+			return "leader_mode"
+		else
+			return original_get(window)
+		end
 	end
-
-	return " " .. icon .. " "
+	mode_module._leader_override_applied = true
 end
 
 local function pane_info(tab)
@@ -45,6 +48,11 @@ function module.apply_to_config(config)
 				tab = {
 					active = { fg = scheme.ansi[1], bg = scheme.ansi[6] },
 				},
+				leader_mode = {
+					a = { fg = scheme.ansi[1], bg = scheme.ansi[2] },
+					b = { fg = scheme.foreground, bg = scheme.background },
+					c = { fg = scheme.foreground, bg = scheme.background },
+				},
 				resize_mode = {
 					a = { fg = scheme.ansi[1], bg = scheme.ansi[7] },
 					b = { fg = scheme.foreground, bg = scheme.background },
@@ -66,7 +74,7 @@ function module.apply_to_config(config)
 		},
 		sections = {
 			tabline_a = {
-				leader,
+				" " .. wezterm.nerdfonts.md_alpha_w_circle .. " ",
 				{
 					"mode",
 					icons_enabled = true,
