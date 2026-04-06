@@ -48,6 +48,30 @@ snippets:
   - name: yadm enter lazygit
     keyword: yg
     snippet: yadm enter lazygit
+  # nb cli
+  - name: Edit Note
+    keyword: nbe
+    snippet: nb edit
+  - name: List Note
+    keyword: nbl
+    snippet: nb ls --limit 20
+  - name: List All Note
+    keyword: nbla
+    snippet: nb ls --all
+  - name: nb search
+    keyword: nbg
+    snippet: rg "{{keyword}}" "$(nb notebooks current --path)"
+completions:
+  - name: nb edit
+    patterns:
+      - "^nb e( .*)? $"
+      - "^nb edit( .*)? $"
+    sourceCommand: "nb ls --no-color | grep -E '^\\[[0-9]+\\]'"
+    options:
+      --ansi: true  # ← ANSIカラー有効
+      --prompt: "'nb edit >'"
+      --preview: "echo {} | sed -E 's/^\\[([0-9]+)\\].*/\\1/' | xargs nb show"
+    callback: "sed -E 's/^\\[([0-9]+)\\].*/\\1/'"
 history:
   fzfOptions:
     - "--preview-window=hidden"
