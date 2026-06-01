@@ -27,8 +27,8 @@ snippets:
     keyword: lla
     snippet: lsd -la
   - name: lsd tree
-    keyword: lsd --tree
-    snippet: lt
+    keyword: lt
+    snippet: lsd --tree
   # others
   - name: clear terminal
     keyword: c
@@ -68,7 +68,7 @@ completions:
       - "^nb edit( .*)? $"
     sourceCommand: "nb ls --no-color | grep -E '^\\[[0-9]+\\]'"
     options:
-      --ansi: true  # ← ANSIカラー有効
+      --ansi: true  # ANSIカラー有効
       --prompt: "'nb edit >'"
       --preview: "echo {} | sed -E 's/^\\[([0-9]+)\\].*/\\1/' | xargs nb show"
     callback: "sed -E 's/^\\[([0-9]+)\\].*/\\1/'"
