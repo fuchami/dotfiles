@@ -10,13 +10,16 @@ config.term = "wezterm"
 -- color theme
 config.color_scheme = "Kanagawa (Gogh)"
 
+-- tab
+config.hide_tab_bar_if_only_one_tab = true
+
 -- Window
 config.initial_cols = 160
 config.initial_rows = 50
 
 config.macos_window_background_blur = 5
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
-config.window_decorations = "TITLE"
+config.window_decorations = "RESIZE"
 
 wezterm.on("toggle-opacity", function(window, _)
 	local overrides = window:get_config_overrides() or {}
@@ -46,11 +49,11 @@ config.scrollback_lines = 100000
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 -- keybinds
-config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
-require("keybinds").apply_to_config(config)
+-- config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
+-- require("keybinds").apply_to_config(config)
 
 -- plugins
-require("plugins.tabline").apply_to_config(config)
+-- require("plugins.tabline").apply_to_config(config)
 require("plugins.smart_splits").apply_to_config(config)
 
 return config
