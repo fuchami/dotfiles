@@ -46,7 +46,7 @@ config.scrollback_lines = 100000
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 -- keybinds
-config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 require("keybinds").apply_to_config(config)
 
 -- plugins
