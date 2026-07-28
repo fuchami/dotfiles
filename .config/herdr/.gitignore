@@ -1,3 +1,6 @@
+plugins/
 herdr-client.log
 herdr-server.log
+plugins.json
+release-notes.json
 session.json
