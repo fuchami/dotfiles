@@ -1,0 +1,7 @@
+theme = "Kanagawa Wave"
+
+font-family = "HackGen35 Console NF"
+font-size = 14
+
+macos-option-as-alt = true
+macos-titlebar-style = "hidden"
