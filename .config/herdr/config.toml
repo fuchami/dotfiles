@@ -1,8 +1,3 @@
-# herdr configuration
-# Place this file at ~/.config/herdr/config.toml
-
-# Show first-run notification setup on startup.
-# Missing also shows onboarding; set false after you've chosen.
 onboarding = false
 
 [theme]
@@ -74,78 +69,33 @@ type = "plugin_action"
 command = "herdr-splits.resize-right"
 
 [ui]
-# Ask for a tab name before creating a new tab.
-# Set false to create tabs immediately with generated names.
-prompt_new_tab_name = true
-
-# Draw borders around split panes.
-pane_borders = true
-
-# Show detected/reported agent labels in split pane borders when no manual pane name is setreveal_hidden_cursor_for_cjk_ime.
 show_agent_labels_on_pane_borders = true
+window_title = "{hostname}: {workspace}"
 
-# Agent panel ordering: "spaces" (grouped by space) or "priority" (attention queue).
-# "workspaces" is accepted as an alias for "spaces".
-agent_panel_sort = "priority"
+tab_bar_right_separator = "  "
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "command", command = "ps -A -o %mem | awk '{s+=$1} END {printf \"󰘚 %.0f%%\", s}'" }, # cpu
+  { type = "command", command = "top -l 1 -n 0 | awk '/CPU usage/ {printf \" %s\", $3}'" }, # memory
+  { type = "datetime", format = " %H:%M" },
 
-# Expanded agent rows. Built-ins are state_icon, state_text, workspace, tab, pane, agent,
-# terminal_title, and terminal_title_stripped.
-# Custom values reported through pane metadata use a $name token.
+]
+
+agent_panel_sort = "spaces"
 [ui.sidebar.agents]
-# Blank rows between agent entries. Set to 1 to restore the previous spacing.
 row_gap = 1
-rows = [["state_icon", "workspace", "tab"], ["agent"]]
-# Optional canonical agent IDs replace the default rows for matching agents.
-[ui.sidebar.agents.rows_by_agent]
-claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
+rows = [
+  ["state_icon", "workspace", "tab"],
+  ["agent"],
+]
 
-# Expanded space rows. Built-ins are state_icon, state_text, workspace, branch, and git_status.
-# Custom values reported through workspace metadata use a $name token, for example $jj_status.
 [ui.sidebar.spaces]
-# Blank rows between space entries. Set to 1 to restore the previous spacing.
 row_gap = 1
-rows = [["state_icon", "workspace"], ["branch", "git_status"]]
-
-[ui.toast]
-# off = disable pop-up notifications
-# herdr = show in-app toasts
-# terminal = ask the outer terminal to show a desktop notification
-# system = ask the OS notification service directly
-delivery = "system"
-# delay_seconds = 1
-
-[ui.toast.clipboard]
-enabled = true
-
-# Play sounds when agents change state in background workspaces
-[ui.sound]
-enabled = true
+rows = [
+   ["state_icon", "workspace"],
+  ["branch", "git_status"],
+]
 
 [experimental]
-# Allow launching herdr from inside a herdr-managed pane.
-# allow_nested = false
-# Experimental local Kitty graphics rendering for attached clients.
-# Requires a Kitty graphics-compatible outer terminal.
 kitty_graphics = true
-# Save recent pane screen history across full server restarts.
-pane_history = false
-# While prefix mode is active, temporarily switch the macOS host input
-# source to an ASCII-capable keyboard layout so prefix commands register
-# even when a CJK IME is active, then restore the previous input source
-# when prefix mode exits. macOS only; best-effort. Default: false.
 switch_ascii_input_source_in_prefix = true
-# Expose the focused pane's cursor to the outer terminal so macOS input
-# methods keep tracking the candidate window when TUIs paint their own
-# cursor (Claude Code, pi, codex). Trade-off: extra cursor visible for
-# apps that hide it without painting a replacement (vim normal mode, etc.).
-# reveal_hidden_cursor_for_cjk_ime = true
-# Optional allow-list: only reveal for focused panes whose detected agent
-# matches one of these names. Empty means apply to any focused pane.
-# If the list contains no valid names, the reveal does not apply.
-# Accepted: pi, claude, codex, gemini, cursor, devin, cline, opencode,
-# copilot, kimi, kiro, droid, amp, grok, hermes, kilo, qodercli, qoder.
-# cjk_ime_agents = ["pi", "claude", "codex", "opencode"]
-# Cursor shape rendered when reveal_hidden_cursor_for_cjk_ime is true.
-# Values: block, steady_block (default), underline, steady_underline, bar, steady_bar.
-# cjk_ime_cursor_shape = "steady_block"
-
