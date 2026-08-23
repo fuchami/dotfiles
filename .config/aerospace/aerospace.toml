@@ -9,13 +9,6 @@ config-version = 2
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
     'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 hidpi=on',
-    'focus-monitor main',
-    # 'workspace M',
-    # 'workspace C',
-    'workspace S',
-    'focus-monitor secondary',
-    'workspace 1',
-    'workspace T',
 ]
 
 # Start AeroSpace at login
@@ -254,6 +247,10 @@ on-mode-changed = []
     run = "move-node-to-workspace 1"
 
 # Terminal
+[[on-window-detected]]
+    if.app-id = "com.mitchellh.ghostty"
+    run = "move-node-to-workspace T"
+
 [[on-window-detected]]
     if.app-id = "com.github.wez.wezterm"
     run = "move-node-to-workspace T"
