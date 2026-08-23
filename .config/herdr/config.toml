@@ -6,15 +6,12 @@ name = "kanagawa"
 [keys]
 prefix = "ctrl+q"
 
-# Prefix-mode actions
 split_vertical = "prefix+|"
 
-# Navigate-mode movement. These local shortcuts win while navigate mode is open.
-# They are independent from focus_pane_*. Do not include prefix+, esc, enter, tab, or 1..9 here.
 navigate_workspace_up = "k"
 navigate_workspace_down = "j"
 navigate_pane_up = "up"
-navigate_pane_right = "down"     # right arrow always focuses the pane to the right
+navigate_pane_down = "down"
 
 [[keys.command]]
 key = "prefix+o"
@@ -74,14 +71,12 @@ window_title = "{hostname}: {workspace}"
 
 tab_bar_right_separator = "  "
 tab_bar_right = [
-  { type = "zoom" },
-  { type = "command", command = "ps -A -o %mem | awk '{s+=$1} END {printf \"󰘚 %.0f%%\", s}'" }, # cpu
-  { type = "command", command = "top -l 1 -n 0 | awk '/CPU usage/ {printf \" %s\", $3}'" }, # memory
+  { type = "command", command = "top -l 1 -n 0 | awk '/CPU usage/ {printf \" %s\", $3}'" },
+  { type = "command", command = "ps -A -o %mem | awk '{s+=$1} END {printf \"󰘚 %.0f%%\", s}'" },
   { type = "datetime", format = " %H:%M" },
 
 ]
 
-agent_panel_sort = "spaces"
 [ui.sidebar.agents]
 row_gap = 1
 rows = [
