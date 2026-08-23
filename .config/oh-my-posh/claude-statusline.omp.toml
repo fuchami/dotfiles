@@ -1,0 +1,44 @@
+version = 4
+final_space = false
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  [[blocks.segments]]
+    type = 'claude'
+    style = 'powerline'
+    powerline_symbol = ''
+    leading_diamond = ''
+    foreground = '#090618'
+    background = '#98bb6c'
+    template = '{{ if .Vim.Mode }}  {{ .Vim.Mode }} {{ end }}'
+  [[blocks.segments]]
+    type = 'claude'
+    style = 'powerline'
+    powerline_symbol = ''
+    leading_diamond = ''
+    foreground = '#090618'
+    background = '#957fb8'
+    template = ' 󰯉 {{ .Model.DisplayName }} '
+  [[blocks.segments]]
+    type = 'claude'
+    style = 'powerline'
+    powerline_symbol = ''
+    trailing_diamond = ''
+    foreground = '#090618'
+    background = '#7e9cd8'
+    background_templates = [
+      '{{ if gt .TokenUsagePercent 90.0 }}#c34043{{ end }}',
+      '{{ if gt .TokenUsagePercent 70.0 }}#ff9e64{{ end }}'
+    ]
+    template = ' {{ .TokenGaugeUsed }} {{ .TokenUsagePercent }}%  {{ .FormattedTokens }}/{{ div .ContextWindow.ContextWindowSize 1000 }}K '
+    [blocks.segments.options]
+      gauge_marked_char = '▰'
+      gauge_unmarked_char = '▱'
+  [[blocks.segments]]
+    type = 'claude'
+    style = 'powerline'
+    powerline_symbol = ''
+    trailing_diamond = ''
+    foreground = '#090618'
+    background = '#e6c384'
+    template = '{{ if .FormattedCost }} {{ .FormattedCost }} {{ end }}'
