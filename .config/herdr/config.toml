@@ -25,6 +25,7 @@ label="$(basename "$repo")"
 '''
 description = "open ghq space"
 
+# for herdr-splits.nvim
 [[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"
@@ -64,6 +65,19 @@ command = "herdr-splits.resize-up"
 key = "ctrl+alt+l"
 type = "plugin_action"
 command = "herdr-splits.resize-right"
+
+# for herdr-quickselect
+[[keys.command]]
+key = "prefix+p"
+type = "plugin_action"
+command = "choplin.quickselect.open-url"
+description = "Open visible URL"
+
+[[keys.command]]
+key = "prefix+space"
+type = "plugin_action"
+command = "choplin.quickselect.copy"
+description = "Copy visible item"
 
 [ui]
 show_agent_labels_on_pane_borders = true
