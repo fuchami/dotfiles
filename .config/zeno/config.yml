@@ -38,7 +38,7 @@ snippets:
     snippet: git
   - name: vim to neovim
     keyword: vim
-    snippet: neovim
+    snippet: nvim
   - name: nvim
     keyword: v
     snippet: nvim
