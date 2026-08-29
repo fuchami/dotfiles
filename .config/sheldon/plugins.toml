@@ -35,13 +35,9 @@ inline = "source <(fzf --zsh)"
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 
-[plugins.zeno]
-github = "yuki-yano/zeno.zsh"
-
-[plugins.zeno-sh]
-local = "~/.config/zeno/"
-use = ["*.zsh"]
-apply = ['source']
+# [plugins.zeno]
+# github = "yuki-yano/zeno.zsh"
+# use = ["zeno-plugin.zsh"]
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
