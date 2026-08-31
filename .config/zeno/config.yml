@@ -68,7 +68,7 @@ completions:
       - "^nb edit( .*)? $"
     sourceCommand: "nb ls --no-color | grep -E '^\\[[0-9]+\\]'"
     options:
-      --ansi: true  # ANSIカラー有効
+      --ansi: true # ANSIカラー有効
       --prompt: "'nb edit >'"
       --preview: "echo {} | sed -E 's/^\\[([0-9]+)\\].*/\\1/' | xargs nb show"
     callback: "sed -E 's/^\\[([0-9]+)\\].*/\\1/'"
@@ -76,4 +76,4 @@ history:
   fzfOptions:
     - "--preview-window=hidden"
   keymap:
-    togglePreview: ? # プレビューウィンドウの表示切替
+    togglePreview: "?" # プレビューウィンドウの表示切替
