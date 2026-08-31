@@ -1,0 +1,44 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode-go/glm-5.3-flash",
+  "provider": {
+    "lmstudio": {
+      "name": "LM Studio (local)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1234/v1"
+      },
+      "models": {
+        "qwen3.6-27b": {
+          "name": "qwen/qwen3.5-27b",
+          "tool_call": true
+        },
+        "qwen3.6-35b": {
+          "name": "qwen/qwen3.6-35",
+          "tool_call": true
+        },
+        "gemma-4-12b-qat": {
+          "name": "google/gemma-4-12b-qat",
+          "tool_call": true
+        },
+        "gemma-4-26b-a4b-qat": {
+          "name": "google/gemma-4-26b-a4b-qat",
+          "tool_call": true
+        },
+        "ornith-1.5-35b-a3b-mlx": {
+          "name": "ornith-1.5-35b-a3b-mlx",
+          "tool_call": true
+        }
+      }
+    },
+    "ollama": {
+      "name": "Ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:11434/v1"
+      },
+      "models": {},
+    }
+  },
+  "share": "disabled",
+}
