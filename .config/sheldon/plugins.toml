@@ -35,9 +35,9 @@ inline = "source <(fzf --zsh)"
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 
-# [plugins.zeno]
-# github = "yuki-yano/zeno.zsh"
-# use = ["zeno-plugin.zsh"]
+[plugins.zeno]
+github = "yuki-yano/zeno.zsh"
+use = ["zeno-plugin.zsh"]
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
@@ -65,4 +65,4 @@ apply = ["defer"]
 
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
-apply = ["defer"]
+# apply = ["defer"]

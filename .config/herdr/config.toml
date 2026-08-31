@@ -105,6 +105,10 @@ rows = [
   ["branch", "git_status"],
 ]
 
+[ui.toast]
+delivery = "system"
+
 [experimental]
 kitty_graphics = true
 switch_ascii_input_source_in_prefix = true
+
