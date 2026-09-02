@@ -1,4 +1,5 @@
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
 
 HISTSIZE=50000
 SAVEHIST=50000

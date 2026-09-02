@@ -26,29 +26,29 @@ github = "romkatv/zsh-defer"
 defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 PATH = 'export PATH="$PATH:{{ dir }}"'
 
-[plugins.zoxide]
-inline = 'eval "$(zoxide init zsh)"'
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit -d $ZSH_COMPDUMP'
 
 [plugins.fzf]
 inline = "source <(fzf --zsh)"
 
-[plugins.zsh-completions]
-github = "zsh-users/zsh-completions"
+[plugins.zoxide]
+inline = 'eval "$(zoxide init zsh)"'
 
 [plugins.zeno]
 github = "yuki-yano/zeno.zsh"
 use = ["zeno-plugin.zsh"]
 
-[plugins.compinit]
-inline = 'autoload -Uz compinit && zsh-defer compinit'
+[plugins.oh-my-posh]
+inline = 'eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/kanagawa.omp.toml)"'
 
 [plugins.functions]
 local = "~/.config/zsh/functions/"
 use = ["*.zsh"]
 apply = ['defer']
-
-[plugins.oh-my-posh]
-inline = 'eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/kanagawa.omp.toml)"'
 
 [plugins.gcloud-sdk]
 inline = '''
