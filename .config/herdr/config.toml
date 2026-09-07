@@ -13,6 +13,11 @@ navigate_workspace_down = "j"
 navigate_pane_up = "up"
 navigate_pane_down = "down"
 
+new_tab = "cmd+t"
+next_tab = "cmd+shift+]"
+previous_tab = "cmd+shift+["
+switch_workspace = "cmd+1..9"
+
 [[keys.command]]
 key = "prefix+o"
 type = "pane"
@@ -24,6 +29,14 @@ label="$(basename "$repo")"
 "$herdr_bin" workspace create --cwd "$repo" --label "$label" --focus
 '''
 description = "open ghq space"
+
+[[keys.command]]
+key = "cmd+g"
+type = "popup"
+command = "lazygit"
+description = "run lazygit"
+width = "90%"
+height = "90%"
 
 # for herdr-splits.nvim
 [[keys.command]]
