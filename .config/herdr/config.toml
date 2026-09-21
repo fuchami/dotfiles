@@ -3,6 +3,7 @@ onboarding = false
 [theme]
 name = "kanagawa"
 
+auto_switch = false
 [keys]
 prefix = "ctrl+q"
 
