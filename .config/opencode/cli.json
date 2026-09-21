@@ -19,5 +19,13 @@
     "permissions": "prompt"
   },
   "animations": true,
-  "plugins": ["./herdr-opencode"]
+  "plugins": [
+    "./herdr-opencode"
+  ],
+  "tabs": {
+    "enabled": false,
+    "layout": "vertical",
+    "scope": "cwd",
+    "indicators": "numbers"
+  }
 }
