@@ -37,14 +37,14 @@
   "shell": "zsh",
   "mcp": {
     "servers": {
-      "producer-pal": {
-        "type": "local",
-        "command": [
-          "npx",
-          "-y",
-          "producer-pal"
-        ]
-      }
+      // "producer-pal": {
+      //   "type": "local",
+      //   "command": [
+      //     "npx",
+      //     "-y",
+      //     "producer-pal"
+      //   ]
+      // }
     }
   }
 }

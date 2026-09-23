@@ -27,5 +27,12 @@
     "layout": "vertical",
     "scope": "cwd",
     "indicators": "numbers"
+  },
+  "prompt": {
+    "paste": "compact",
+    "image_preview": true
+  },
+  "terminal": {
+    "copy": "manual"
   }
 }
