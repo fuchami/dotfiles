@@ -10,7 +10,7 @@
 "xwmx/taps" = "https://github.com/xwmx/homebrew-taps.git"                         # nb
 
 [bootstrap.packages]
-# --- CLI 基本ツール ---
+# --- core CLI tools ---
 "brew:bash" = "latest"
 "brew:bat" = "latest"
 "brew:fd" = "latest"
@@ -22,13 +22,13 @@
 "brew:wget" = "latest"
 "brew:xdg-ninja" = "latest"
 
-# --- シェル環境（zsh） ---
+# --- shell (zsh) ---
 "brew:hyfetch" = "latest"
 "brew:sheldon" = "latest"
 "brew:zoxide" = "latest"
 "brew:jandedobbeleer/oh-my-posh/oh-my-posh" = "latest"
 
-# --- 開発ランタイム ---
+# --- dev runtimes ---
 "brew:deno" = "latest"
 "brew:go" = "latest"
 "brew:node" = "latest"
@@ -36,7 +36,7 @@
 "brew:luarocks" = "latest"
 "brew:pkgconf" = "latest"
 
-# --- 開発（VCS・エディタ） ---
+# --- dev tools (VCS / editor) ---
 "brew:git" = "latest"
 "brew:git-delta" = "latest"
 "brew:gh" = "latest"
@@ -45,7 +45,7 @@
 "brew:neovim" = "latest"
 "brew:lazygit" = "latest"
 
-# --- TUI・個人ツール ---
+# --- TUI / personal tools ---
 "brew:herdr" = "latest"
 "brew:mactop" = "latest"
 "brew:xwmx/taps/nb" = "latest"
@@ -53,29 +53,29 @@
 "brew:anomalyco/tap/opencode-v2" = "latest"
 "brew:yazi" = "latest"
 
-# --- 画像・ドキュメント・通信 ---
+# --- image / document / network ---
 "brew:imagemagick" = "latest"
 "brew:poppler" = "latest"
 "brew:mosh" = "latest"
 
-# --- macOS: ウィンドウ・見た目 ---
+# --- macOS: window management / look & feel ---
 "brew-cask:nikitabobko/tap/aerospace" = { version = "latest", adopt = true }
 "brew:felixkratz/formulae/borders" = "latest"
 "brew-cask:font-hackgen" = { version = "latest", adopt = true }
 "brew-cask:font-hackgen-nerd" = { version = "latest", adopt = true }
 
-# --- macOS: ターミナル・開発系アプリ ---
+# --- macOS: terminals / dev apps ---
 "brew-cask:ghostty" = { version = "latest", adopt = true }
 "brew-cask:wezterm" = { version = "latest", adopt = true }
 "brew-cask:visual-studio-code" = { version = "latest", adopt = true }
 "brew-cask:codex" = { version = "latest", adopt = true }
 "brew-cask:terminal-browser" = { version = "latest", adopt = true }
 
-# --- macOS: 入力・キー ---
+# --- macOS: input / keyboard ---
 "brew-cask:google-japanese-ime" = { version = "latest", adopt = true }
 "brew-cask:karabiner-elements" = { version = "latest", adopt = true }
 
-# --- macOS: その他アプリ ---
+# --- macOS: other apps ---
 "brew-cask:raycast" = { version = "latest", adopt = true }
 "brew-cask:readdle-spark" = { version = "latest", adopt = true }
 "brew-cask:slack" = { version = "latest", adopt = true }
