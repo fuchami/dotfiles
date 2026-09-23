@@ -1,0 +1,24 @@
+# macOS system settings
+
+[bootstrap.macos.dock]
+tilesize = 40
+largesize = 100
+autohide = true
+show_recents = false
+
+[bootstrap.macos.defaults."com.apple.dock"]
+mineffect = "genie"
+
+[bootstrap.macos.finder]
+show_pathbar = true
+preferred_view_style = "column"
+
+[bootstrap.macos.defaults.NSGlobalDomain]
+AppleShowAllExtensions = true
+
+[bootstrap.macos.trackpad]
+three_finger_drag = true
+
+[bootstrap.hooks.post-defaults]
+run = "killall Dock || true"
+run_only_on = ["macos"]

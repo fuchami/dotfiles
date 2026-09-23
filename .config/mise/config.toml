@@ -1,0 +1,7 @@
+# mise グローバル設定のエントリポイント
+# 内容は conf.d/ に分割:
+#   conf.d/packages.toml - brew パッケージ ([bootstrap.packages] / [bootstrap.brew.taps])
+#   conf.d/macos.toml    - macOS defaults ([bootstrap.macos.*] / hooks)
+
+[tools]
+ruby = "3"
