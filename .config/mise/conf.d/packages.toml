@@ -1,65 +1,82 @@
 # brew パッケージ管理（yadm 管理の dotfiles 設定の一部）
-# パッケージ増減は `mise bootstrap packages use brew:xxx` / `mise bootstrap packages prune` で行う
+# 用途ごとにグルーピング（並び順は手動管理。`packages import` を再実行するとアルファベット順に戻る）
+# パッケージ増減は `mise bootstrap packages use brew:xxx --path ~/.config/mise/conf.d/packages.toml` / `mise bootstrap packages prune` で行う
 # バージョンは latest 固定（GUIアプリ・caskは自己更新前提）
 
 [bootstrap.brew.taps]
-"anomalyco/tap" = "https://github.com/anomalyco/homebrew-tap.git"
-"felixkratz/formulae" = "https://github.com/felixkratz/homebrew-formulae.git"
-"jandedobbeleer/oh-my-posh" = "https://github.com/jandedobbeleer/homebrew-oh-my-posh.git"
-"xwmx/taps" = "https://github.com/xwmx/homebrew-taps.git"
+"anomalyco/tap" = "https://github.com/anomalyco/homebrew-tap.git"                 # opencode-v2
+"felixkratz/formulae" = "https://github.com/felixkratz/homebrew-formulae.git"     # borders
+"jandedobbeleer/oh-my-posh" = "https://github.com/jandedobbeleer/homebrew-oh-my-posh.git"  # oh-my-posh
+"xwmx/taps" = "https://github.com/xwmx/homebrew-taps.git"                         # nb
 
 [bootstrap.packages]
-# --- formula (mise bootstrap packages import --manager brew より生成、実機状態を正とする) ---
+# --- CLI 基本ツール ---
 "brew:bash" = "latest"
 "brew:bat" = "latest"
-"brew:deno" = "latest"
 "brew:fd" = "latest"
 "brew:fzf" = "latest"
-"brew:gh" = "latest"
-"brew:ghq" = "latest"
-"brew:git" = "latest"
-"brew:git-delta" = "latest"
-"brew:go" = "latest"
-"brew:go-task" = "latest"
-"brew:herdr" = "latest"
-"brew:hyfetch" = "latest"
-"brew:imagemagick" = "latest"
 "brew:jq" = "latest"
-"brew:lazygit" = "latest"
 "brew:lsd" = "latest"
-"brew:luarocks" = "latest"
-"brew:neovim" = "latest"
-"brew:node" = "latest"
-"brew:ollama" = "latest"
-"brew:pkgconf" = "latest"
-"brew:poppler" = "latest"
 "brew:ripgrep" = "latest"
-"brew:sheldon" = "latest"
 "brew:tree" = "latest"
-"brew:uv" = "latest"
 "brew:wget" = "latest"
 "brew:xdg-ninja" = "latest"
-"brew:yazi" = "latest"
+
+# --- シェル環境（zsh） ---
+"brew:hyfetch" = "latest"
+"brew:sheldon" = "latest"
 "brew:zoxide" = "latest"
-# --- tap 経由の formula ---
-"brew:anomalyco/tap/opencode-v2" = "latest"
-"brew:felixkratz/formulae/borders" = "latest"
 "brew:jandedobbeleer/oh-my-posh/oh-my-posh" = "latest"
-"brew:xwmx/taps/nb" = "latest"
+
+# --- 開発ランタイム ---
+"brew:deno" = "latest"
+"brew:go" = "latest"
+"brew:node" = "latest"
+"brew:uv" = "latest"
+"brew:luarocks" = "latest"
+"brew:pkgconf" = "latest"
+
+# --- 開発（VCS・エディタ） ---
+"brew:git" = "latest"
+"brew:git-delta" = "latest"
+"brew:gh" = "latest"
+"brew:ghq" = "latest"
+"brew:go-task" = "latest"
+"brew:neovim" = "latest"
+"brew:lazygit" = "latest"
+
+# --- TUI・個人ツール ---
+"brew:herdr" = "latest"
 "brew:mactop" = "latest"
+"brew:xwmx/taps/nb" = "latest"
+"brew:ollama" = "latest"
+"brew:anomalyco/tap/opencode-v2" = "latest"
+"brew:yazi" = "latest"
+
+# --- 画像・ドキュメント・通信 ---
+"brew:imagemagick" = "latest"
+"brew:poppler" = "latest"
 "brew:mosh" = "latest"
-# --- cask（import 非対応のため手書き。実機のインストール済み + 自動更新前提） ---
-"brew-cask:nikitabobko/tap/aerospace" = { version = "latest", adopt = true }  # tap配信cask（APIメタデータ無し）→ Ruby 3+ で tap 定義を評価する。ruby@3 は [tools] で導入済み
-"brew-cask:codex" = { version = "latest", adopt = true }
+
+# --- macOS: ウィンドウ・見た目 ---
+"brew-cask:nikitabobko/tap/aerospace" = { version = "latest", adopt = true }
+"brew:felixkratz/formulae/borders" = "latest"
 "brew-cask:font-hackgen" = { version = "latest", adopt = true }
 "brew-cask:font-hackgen-nerd" = { version = "latest", adopt = true }
+
+# --- macOS: ターミナル・開発系アプリ ---
 "brew-cask:ghostty" = { version = "latest", adopt = true }
+"brew-cask:wezterm" = { version = "latest", adopt = true }
+"brew-cask:visual-studio-code" = { version = "latest", adopt = true }
+"brew-cask:codex" = { version = "latest", adopt = true }
+"brew-cask:terminal-browser" = { version = "latest", adopt = true }
+
+# --- macOS: 入力・キー ---
 "brew-cask:google-japanese-ime" = { version = "latest", adopt = true }
 "brew-cask:karabiner-elements" = { version = "latest", adopt = true }
+
+# --- macOS: その他アプリ ---
 "brew-cask:raycast" = { version = "latest", adopt = true }
 "brew-cask:readdle-spark" = { version = "latest", adopt = true }
 "brew-cask:slack" = { version = "latest", adopt = true }
 "brew-cask:spotify" = { version = "latest", adopt = true }
-"brew-cask:terminal-browser" = { version = "latest", adopt = true }
-"brew-cask:visual-studio-code" = { version = "latest", adopt = true }
-"brew-cask:wezterm" = { version = "latest", adopt = true }

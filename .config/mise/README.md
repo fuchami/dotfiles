@@ -11,7 +11,7 @@
 | ファイル | 役割 |
 |---|---|
 | `config.toml` | エントリポイント + `[tools]`（開発ツールのバージョン管理） |
-| `conf.d/packages.toml` | brew formula / cask / taps の宣言 |
+| `conf.d/packages.toml` | brew formula / cask / taps の宣言（用途ごとにグルーピング） |
 | `conf.d/macos.toml` | Dock / Finder / トラックパッドなどの defaults 宣言 |
 
 `conf.d/*.toml` は mise が自動で読み込む（アルファベット順）。
@@ -34,8 +34,8 @@ mise bootstrap --only packages,macos-defaults
 
 ```sh
 # 追加（conf.d/packages.toml に書き込まれてインストールされる）
-mise bootstrap packages use brew:ripgrep
-mise bootstrap packages use brew-cask:firefox
+mise bootstrap packages use brew:ripgrep --path ~/.config/mise/conf.d/packages.toml
+mise bootstrap packages use brew-cask:firefox --path ~/.config/mise/conf.d/packages.toml
 
 # 削除（宣言から外したら、未宣言パッケージを掃除）
 # ※ まず --dry-run で確認すること
