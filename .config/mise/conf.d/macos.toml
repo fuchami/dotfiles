@@ -1,0 +1,25 @@
+# macOS システム設定（yadm 管理の dotfiles 設定の一部）
+# .config/macos/defaults.sh を宣言的に移行したもの。参照: https://macos-defaults.com/
+
+[bootstrap.macos.dock]
+tilesize = 40
+largesize = 100
+autohide = true
+show_recents = false
+
+[bootstrap.macos.defaults."com.apple.dock"]
+mineffect = "genie"
+
+[bootstrap.macos.finder]
+show_pathbar = true
+preferred_view_style = "column"  # 実機の現在値(clmv)に合わせて宣言。defaults.sh 当初の意図は "list"
+
+[bootstrap.macos.defaults.NSGlobalDomain]
+AppleShowAllExtensions = true
+
+[bootstrap.macos.trackpad]
+three_finger_drag = true
+
+[bootstrap.hooks.post-defaults]
+run = "killall Dock || true"
+run_only_on = ["macos"]
