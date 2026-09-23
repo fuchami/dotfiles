@@ -39,6 +39,12 @@ description = "run lazygit"
 width = "90%"
 height = "90%"
 
+[[keys.command]]
+key = "prefix+p"
+type = "plugin_action"
+command = "ray.plugin-manager.open"
+description = "open plugin manager"
+
 # for herdr-splits.nvim
 [[keys.command]]
 key = "ctrl+h"
@@ -82,7 +88,7 @@ command = "herdr-splits.resize-right"
 
 # for herdr-quickselect
 [[keys.command]]
-key = "prefix+p"
+key = "prefix+l"
 type = "plugin_action"
 command = "choplin.quickselect.open-url"
 description = "Open visible URL"
