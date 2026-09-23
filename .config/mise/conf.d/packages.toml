@@ -49,7 +49,7 @@
 "brew:mactop" = "latest"
 "brew:mosh" = "latest"
 # --- cask（import 非対応のため手書き。実機のインストール済み + 自動更新前提） ---
-# "brew-cask:nikitabobko/tap/aerospace" = { version = "latest", adopt = true }  # TODO: tap配信caskはruby3+での評価が必要（システムruby 2.6では不可）。ruby3導入後に有効化
+"brew-cask:nikitabobko/tap/aerospace" = { version = "latest", adopt = true }  # tap配信cask（APIメタデータ無し）→ Ruby 3+ で tap 定義を評価する。ruby@3 は [tools] で導入済み
 "brew-cask:codex" = { version = "latest", adopt = true }
 "brew-cask:font-hackgen" = { version = "latest", adopt = true }
 "brew-cask:font-hackgen-nerd" = { version = "latest", adopt = true }

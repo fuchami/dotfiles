@@ -70,8 +70,7 @@ yadm bootstrap   # 内部で mise bootstrap --only packages,macos-defaults --yes
 
 ## 注意事項
 
-- **AeroSpace は未宣言**（`conf.d/packages.toml` の TODO 参照）
-  tap 配信 cask の評価に Ruby 3+ が必要で、システム ruby（2.6）では不可のため保留中。
-  ruby3 導入後（例: `mise use -g ruby@3`）にコメントアウトを外して有効化する
+- **AeroSpace（tap 配信 cask）は Ruby 3+ が必要**
+  tap に Homebrew API メタデータが無い cask は、tap の Ruby 定義を評価して情報を得るため、Ruby 3 以上が要る（システム ruby が 2.x の環境では `[tools]` に ruby を置く。本環境は `ruby@3` を導入済みで解決済み）
 - **brew services は管理外**（borders / herdr / mactop / ollama）。mise は `brew services` 非対応なので、サービス管理は引き続き brew 側
 - 公式ドキュメント: https://mise.jdx.dev/bootstrap.html （packages / defaults のリファレンスもリンク先）
