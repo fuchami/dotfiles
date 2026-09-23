@@ -8,11 +8,11 @@
 
 ## ファイル構成
 
-| ファイル | 役割 |
-|---|---|
-| `config.toml` | エントリポイント + `[tools]`（開発ツールのバージョン管理） |
+| ファイル               | 役割                                                        |
+|------------------------|-------------------------------------------------------------|
+| `config.toml`          | エントリポイント + `[tools]`（開発ツールのバージョン管理）  |
 | `conf.d/packages.toml` | brew formula / cask / taps の宣言（用途ごとにグルーピング） |
-| `conf.d/macos.toml` | Dock / Finder / トラックパッドなどの defaults 宣言 |
+| `conf.d/macos.toml`    | Dock / Finder / トラックパッドなどの defaults 宣言          |
 
 `conf.d/*.toml` は mise が自動で読み込む（アルファベット順）。
 
@@ -83,5 +83,4 @@ mise install     # [tools]（ruby@3 等）も入れる（--only 対象外のた�
 
 ## 注意事項
 
-- **brew services は管理外**（borders / herdr / mactop / ollama）。mise は `brew services` 非対応なので、サービス管理は引き続き brew 側
 - 公式ドキュメント: https://mise.jdx.dev/bootstrap.html （packages / defaults のリファレンスもリンク先）
