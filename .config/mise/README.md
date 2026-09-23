@@ -1,7 +1,7 @@
 # mise 設定メモ
 
 このディレクトリは [mise](https://mise.jdx.dev/) のグローバル設定。
-**brew パッケージと macOS のシステム設定（defaults）を宣言的に管理**している。
+**brew パッケージ・macOS のシステム設定（defaults）・開発ツール（Ruby 等）を宣言的に管理**している。
 
 - 設定ファイル（dotfiles）自体の管理は yadm のまま（`~/.config` 以下）
 - パッケージ・defaults は「宣言と実機の差分を埋める」形で適用される（冪等・何度実行しても安全）
@@ -10,7 +10,7 @@
 
 | ファイル | 役割 |
 |---|---|
-| `config.toml` | エントリポイント（内容の説明のみ） |
+| `config.toml` | エントリポイント + `[tools]`（開発ツールのバージョン管理） |
 | `conf.d/packages.toml` | brew formula / cask / taps の宣言 |
 | `conf.d/macos.toml` | Dock / Finder / トラックパッドなどの defaults 宣言 |
 
@@ -60,17 +60,28 @@ mise bootstrap macos defaults status
 
 適用後、Dock/Finder は反映まで再起動が必要（`post-defaults` hook で `killall Dock` は自動実行される）。
 
+## 開発ツール（`[tools]`）の管理
+
+Ruby などの開発ランタイムは brew と別に mise がバージョン管理する。
+
+```sh
+mise use -g ruby@3     # グローバルに導入（config.toml の [tools] に追記される）
+mise ls                # 導入済みツールの一覧
+mise upgrade           # 全ツールを更新
+```
+
+現在の構成: `ruby@3`
+
 ## 新マシンのセットアップ
 
 ```sh
 # Homebrew と mise を導入後
 yadm clone git@github.com:fuchami/dotfiles.git
 yadm bootstrap   # 内部で mise bootstrap --only packages,macos-defaults --yes を実行
+mise install     # [tools]（ruby@3 等）も入れる（--only 対象外のため個別実行）
 ```
 
 ## 注意事項
 
-- **AeroSpace（tap 配信 cask）は Ruby 3+ が必要**
-  tap に Homebrew API メタデータが無い cask は、tap の Ruby 定義を評価して情報を得るため、Ruby 3 以上が要る（システム ruby が 2.x の環境では `[tools]` に ruby を置く。本環境は `ruby@3` を導入済みで解決済み）
 - **brew services は管理外**（borders / herdr / mactop / ollama）。mise は `brew services` 非対応なので、サービス管理は引き続き brew 側
 - 公式ドキュメント: https://mise.jdx.dev/bootstrap.html （packages / defaults のリファレンスもリンク先）
