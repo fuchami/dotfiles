@@ -13,4 +13,5 @@ bindkey -e
 
 [[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
 
+eval "$(mise activate zsh)"
 eval "$(sheldon source)"
