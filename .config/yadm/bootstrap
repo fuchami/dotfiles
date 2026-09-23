@@ -10,14 +10,10 @@ if [ "$system_type" = "Darwin" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
-  if [ -f "$HOME/.Brewfile" ]; then
-    echo "Updating homebrew bundle"
-    brew bundle --global
-  fi
-
-  if [[ "$(id -u -n)" == *"fuchami"*]]; then
-    echo "Bundle Private Brewfile"
-    brew bundle --file=~/.Brewfile.private
+  # install mise if it's missing (brew packages & macOS defaults are managed by mise bootstrap)
+  if ! command -v mise >/dev/null 2>&1; then
+    echo "Installing mise"
+    curl https://mise.run | sh
   fi
 
   # clone AstroNvim Config
@@ -27,5 +23,10 @@ if [ "$system_type" = "Darwin" ]; then
   echo 'export ZDOTDIR="$HOME"/.config/zsh' | sudo tee -a /etc/zshenv
   # history file
   mkdir -p ~/.local/state/zsh && touch mkdir ~/.local/state/zsh/history
+
+  # brew packages + macOS defaults (managed in ~/.config/mise/config.toml)
+  if command -v mise >/dev/null 2>&1; then
+    mise bootstrap --only packages,macos-defaults --yes
+  fi
 
 fi

@@ -1,0 +1,91 @@
+# yadm 管理の dotfiles 設定（Phase 2〜3: brew パッケージ + macOS defaults を mise bootstrap に移行）
+# パッケージ増減は `mise bootstrap packages use brew:xxx` / `mise bootstrap packages prune` で行う
+# パッケージの要求バージョンは latest（GUIアプリ・caskは自己更新前提）
+
+[settings]
+# mise 自体は bootstrap の/tools 不要なので既定のまま
+
+[bootstrap.brew.taps]
+"anomalyco/tap" = "https://github.com/anomalyco/homebrew-tap.git"
+"felixkratz/formulae" = "https://github.com/felixkratz/homebrew-formulae.git"
+"jandedobbeleer/oh-my-posh" = "https://github.com/jandedobbeleer/homebrew-oh-my-posh.git"
+"xwmx/taps" = "https://github.com/xwmx/homebrew-taps.git"
+
+[bootstrap.packages]
+# --- formula (mise bootstrap packages import --manager brew より生成、実機状態を正とする) ---
+"brew:bash" = "latest"
+"brew:bat" = "latest"
+"brew:deno" = "latest"
+"brew:fd" = "latest"
+"brew:fzf" = "latest"
+"brew:gh" = "latest"
+"brew:ghq" = "latest"
+"brew:git" = "latest"
+"brew:git-delta" = "latest"
+"brew:go" = "latest"
+"brew:go-task" = "latest"
+"brew:herdr" = "latest"
+"brew:hyfetch" = "latest"
+"brew:imagemagick" = "latest"
+"brew:jq" = "latest"
+"brew:lazygit" = "latest"
+"brew:lsd" = "latest"
+"brew:luarocks" = "latest"
+"brew:neovim" = "latest"
+"brew:node" = "latest"
+"brew:ollama" = "latest"
+"brew:pkgconf" = "latest"
+"brew:poppler" = "latest"
+"brew:ripgrep" = "latest"
+"brew:sheldon" = "latest"
+"brew:tree" = "latest"
+"brew:uv" = "latest"
+"brew:wget" = "latest"
+"brew:xdg-ninja" = "latest"
+"brew:yazi" = "latest"
+"brew:zoxide" = "latest"
+# --- tap 経由の formula ---
+"brew:anomalyco/tap/opencode-v2" = "latest"
+"brew:felixkratz/formulae/borders" = "latest"
+"brew:jandedobbeleer/oh-my-posh/oh-my-posh" = "latest"
+"brew:xwmx/taps/nb" = "latest"
+"brew:mactop" = "latest"
+"brew:mosh" = "latest"
+# --- cask（import 非対応のため手書き。実機のインストール済み + 自動更新前提） ---
+# "brew-cask:nikitabobko/tap/aerospace" = { version = "latest", adopt = true }  # TODO: tap配信caskはruby3+での評価が必要（システムruby 2.6では不可）。ruby3導入後に有効化
+"brew-cask:codex" = { version = "latest", adopt = true }
+"brew-cask:font-hackgen" = { version = "latest", adopt = true }
+"brew-cask:font-hackgen-nerd" = { version = "latest", adopt = true }
+"brew-cask:ghostty" = { version = "latest", adopt = true }
+"brew-cask:google-japanese-ime" = { version = "latest", adopt = true }
+"brew-cask:karabiner-elements" = { version = "latest", adopt = true }
+"brew-cask:raycast" = { version = "latest", adopt = true }
+"brew-cask:readdle-spark" = { version = "latest", adopt = true }
+"brew-cask:slack" = { version = "latest", adopt = true }
+"brew-cask:spotify" = { version = "latest", adopt = true }
+"brew-cask:terminal-browser" = { version = "latest", adopt = true }
+"brew-cask:visual-studio-code" = { version = "latest", adopt = true }
+"brew-cask:wezterm" = { version = "latest", adopt = true }
+
+[bootstrap.macos.dock]
+tilesize = 40
+largesize = 100
+autohide = true
+show_recents = false
+
+[bootstrap.macos.defaults."com.apple.dock"]
+mineffect = "genie"
+
+[bootstrap.macos.finder]
+show_pathbar = true
+preferred_view_style = "column"  # 実機の現在値(clmv)に合わせて宣言。defaults.sh 当初の意図は "list"
+
+[bootstrap.macos.defaults.NSGlobalDomain]
+AppleShowAllExtensions = true
+
+[bootstrap.macos.trackpad]
+three_finger_drag = true
+
+[bootstrap.hooks.post-defaults]
+run = "killall Dock || true"
+run_only_on = ["macos"]
