@@ -28,6 +28,11 @@ mise bootstrap --only packages,macos-defaults --dry-run
 
 # 適用（packages + macOS defaults のみ。dotfiles は触らない）
 mise bootstrap --only packages,macos-defaults
+
+# アップデート（旧: brew update && brew upgrade。update 相当は不要＝API 直読）
+mise bootstrap packages upgrade               # 一括更新（auto_updates 系のアプリは自己更新のためスキップ）
+mise bootstrap packages upgrade brew:neovim   # 個別更新
+mise upgrade                                  # [tools]（ruby 等）の更新（別系統なので両方回す）
 ```
 
 ## パッケージの増減
@@ -71,19 +76,6 @@ mise upgrade           # 全ツールを更新
 ```
 
 現在の構成: `ruby@3`
-
-## 日常のアップデート（旧: `brew update && brew upgrade`）
-
-```sh
-mise bootstrap packages upgrade   # brew パッケージ一括更新
-mise upgrade                      # [tools]（ruby 等）の更新（別系統なので両方回す）
-```
-
-- `brew update` 相当は不要（mise が formulae.brew.sh の API を直接見るため）
-- 自己更新するアプリ（slack / raycast 等の auto_updates 系）はスキップされる
-- 個別更新: `mise bootstrap packages upgrade brew:neovim`
-- 未インストールのものは upgrade 対象外 → `mise bootstrap packages apply`
-- 更新後の確認: `mise bootstrap status`
 
 ## 新マシンのセットアップ
 
