@@ -29,7 +29,7 @@ mise bootstrap --only packages,macos-defaults --dry-run
 # 適用（packages + macOS defaults のみ。dotfiles は触らない）
 mise bootstrap --only packages,macos-defaults
 
-# アップデート（旧: brew update && brew upgrade。update 相当は不要＝API 直読）
+# アップデート
 mise bootstrap packages upgrade               # 一括更新（auto_updates 系のアプリは自己更新のためスキップ）
 mise bootstrap packages upgrade brew:neovim   # 個別更新
 mise upgrade                                  # [tools]（ruby 等）の更新（別系統なので両方回す）

@@ -1,7 +1,4 @@
-# brew パッケージ管理（yadm 管理の dotfiles 設定の一部）
-# 用途ごとにグルーピング（並び順は手動管理。`packages import` を再実行するとアルファベット順に戻る）
-# パッケージ増減は `mise bootstrap packages use brew:xxx --path ~/.config/mise/conf.d/packages.toml` / `mise bootstrap packages prune` で行う
-# バージョンは latest 固定（GUIアプリ・caskは自己更新前提）
+# brew packages
 
 [bootstrap.brew.taps]
 "anomalyco/tap" = "https://github.com/anomalyco/homebrew-tap.git"                 # opencode-v2
