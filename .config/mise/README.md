@@ -86,6 +86,19 @@ yadm bootstrap   # 内部で mise bootstrap --only packages,macos-defaults --yes
 mise install     # [tools]（ruby@3 等）も入れる（--only 対象外のため個別実行）
 ```
 
+## 新マシンでの手動設定（自動化できないもの）
+
+`mise bootstrap` では再現できない設定。初回セットアップ後に手動で行う。
+
+- **Apple ID / iCloud**: サインイン、iCloud Drive の有効化（Finder の iCloud 連携もこれに依存）
+- **TCC 権限**（初回起動時のダイアログで許可）
+  - 画面収録: Raycast / terminal-browser など
+  - アクセシビリティ: Karabiner-Elements / AeroSpace
+  - フルディスクアクセス: 必要な開発ツール
+- **キーボード**: 入力ソースに Google日本語入力を追加（システム設定 > キーボード > 入力ソース）。キーボード配列は ABC
+- **Bluetooth**: トラックパッド / キーボード / マウスのペアリング
+- **その他**: Wi-Fi、壁紙、Dock に並べるアプリ、アカウント系アプリのサインイン（Slack / Spotify / LINE / Google Drive など）
+
 ## 注意事項
 
 - 公式ドキュメント: https://mise.jdx.dev/bootstrap.html （packages / defaults のリファレンスもリンク先）
