@@ -50,15 +50,6 @@ local = "~/.config/zsh/functions/"
 use = ["*.zsh"]
 apply = ['defer']
 
-[plugins.gcloud-sdk]
-inline = '''
-brew_prefix="$(brew --prefix)"
-if [ -f "$brew_prefix/share/google-cloud-sdk/path.zsh.inc" ]; then
-  zsh-defer source "$brew_prefix/share/google-cloud-sdk/path.zsh.inc"
-  zsh-defer source "$brew_prefix/share/google-cloud-sdk/completion.zsh.inc"
-fi
-'''
-
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 apply = ["defer"]
