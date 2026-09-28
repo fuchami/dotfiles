@@ -11,7 +11,7 @@
 | ファイル               | 役割                                                        |
 |------------------------|-------------------------------------------------------------|
 | `config.toml`          | エントリポイント + `[tools]`（開発ツールのバージョン管理）  |
-| `conf.d/packages.toml` | brew formula / cask / taps の宣言（用途ごとにグルーピング） |
+| `conf.d/packages.toml` | brew 残留分の宣言（macOS 専用 / mise registry 非対応の formula・cask・taps） |
 | `conf.d/macos.toml`    | Dock / Finder / トラックパッドなどの defaults 宣言          |
 
 `conf.d/*.toml` は mise が自動で読み込む（アルファベット順）。
@@ -87,12 +87,11 @@ mise upgrade           # 全ツールを更新
 
 ※ `latest` 指定でも `mise.lock` に解決済みバージョンが記録されるため再現性は確保される。
 
-### brew からの移行ステータス（2026-09-28 時点）
+### brew からの移行（完了）
 
-- 上記21本（ruby 以外）は brew から mise へ移行済み（`~/.local/share/mise/shims` が PATH 前方のため mise 版が優先される）
-- npm グローバルパッケージも mise の node 配下に再インストール済み
-- **`conf.d/packages.toml` の brew 宣言は prune 実行前まで残してある**（併存中の安全側）
-- 残作業: 数日併用後 → packages.toml から移行21本の宣言を削除・`yadm` 追加・`jandedobbeleer/oh-my-posh` tap 削除 → `mise bootstrap packages prune --manager brew`（詳細は `migrate-guide.md`）
+2026-09 に CLI ツール21本を brew → mise へ移行した（経緯は `migrate-guide.md`）。
+`conf.d/packages.toml` には macOS 専用 / mise registry 非対応のもの（`git` `tree` `wget` `mosh` `imagemagick` `poppler` `yadm` `nb` `opencode-v2` 等）のみを残す。
+Linux サーバでは `mise install` のみで `[tools]` が揃う（`git` 等は distro のパッケージマネージャで入れる）。
 
 ## 新マシンのセットアップ
 
@@ -102,6 +101,9 @@ yadm clone git@github.com:fuchami/dotfiles.git
 yadm bootstrap   # 内部で mise bootstrap --only packages,macos-defaults --yes を実行
 mise install     # [tools]（22本）も入れる（--only 対象外のため個別実行）
 ```
+
+※ `xwmx/taps/nb` は mise が tap formula を解決できず bootstrap が失敗することがある（2026.9.12 時点）。
+   その場合は `brew install xwmx/taps/nb` を別途実行する。
 
 ## 新マシンでの手動設定（自動化できないもの）
 
