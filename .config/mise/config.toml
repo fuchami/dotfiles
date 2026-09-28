@@ -4,4 +4,30 @@
 #   conf.d/macos.toml    - macOS defaults ([bootstrap.macos.*] / hooks)
 
 [tools]
+# --- runtimes ---
 ruby = "3"
+deno = "2"
+node = "26"
+go = "1"
+uv = "latest"
+# --- core CLI ---
+bat = "latest"
+fd = "latest"
+fzf = "latest"
+jq = "latest"
+lsd = "latest"
+ripgrep = "latest"
+# --- shell ---
+sheldon = "latest"
+zoxide = "latest"
+oh-my-posh = "latest"
+# --- dev tools ---
+delta = "latest"
+gh = "latest"
+ghq = "latest"
+task = "latest"
+lazygit = "latest"
+neovim = "latest"
+# --- TUI ---
+yazi = "latest"
+herdr = "latest"

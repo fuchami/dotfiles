@@ -1,7 +1,7 @@
 # mise 設定メモ
 
 このディレクトリは [mise](https://mise.jdx.dev/) のグローバル設定。
-**brew パッケージ・macOS のシステム設定（defaults）・開発ツール（Ruby 等）を宣言的に管理**している。
+**開発ツール（ランタイム・CLI）・brew パッケージ・macOS のシステム設定（defaults）を宣言的に管理**している。
 
 - 設定ファイル（dotfiles）自体の管理は yadm のまま（`~/.config` 以下）
 - パッケージ・defaults は「宣言と実機の差分を埋める」形で適用される（冪等・何度実行しても安全）
@@ -32,7 +32,7 @@ mise bootstrap --only packages,macos-defaults
 # アップデート
 mise bootstrap packages upgrade               # 一括更新（auto_updates 系のアプリは自己更新のためスキップ）
 mise bootstrap packages upgrade brew:neovim   # 個別更新
-mise upgrade                                  # [tools]（ruby 等）の更新（別系統なので両方回す）
+mise upgrade                                  # [tools]（ランタイム・CLI 22本）の更新（別系統なので両方回す）
 ```
 
 ## パッケージの増減
@@ -67,7 +67,7 @@ mise bootstrap macos defaults status
 
 ## 開発ツール（`[tools]`）の管理
 
-Ruby などの開発ランタイムは brew と別に mise がバージョン管理する。
+開発ランタイム・CLI ツールは brew と別に mise がバージョン管理する（Linux サーバでも `mise install` だけで同じ構成が再現できる）。
 
 ```sh
 mise use -g ruby@3     # グローバルに導入（config.toml の [tools] に追記される）
@@ -75,7 +75,24 @@ mise ls                # 導入済みツールの一覧
 mise upgrade           # 全ツールを更新
 ```
 
-現在の構成: `ruby@3`
+現在の構成（22本）:
+
+| カテゴリ | ツール |
+|---|---|
+| ランタイム | `ruby@3` `deno@2` `node@26` `go@1` `uv` |
+| コア CLI | `bat` `fd` `fzf` `jq` `lsd` `ripgrep` |
+| shell | `sheldon` `zoxide` `oh-my-posh` |
+| dev tools | `delta` `gh` `ghq` `task` `lazygit` `neovim` |
+| TUI | `yazi` `herdr` |
+
+※ `latest` 指定でも `mise.lock` に解決済みバージョンが記録されるため再現性は確保される。
+
+### brew からの移行ステータス（2026-09-28 時点）
+
+- 上記21本（ruby 以外）は brew から mise へ移行済み（`~/.local/share/mise/shims` が PATH 前方のため mise 版が優先される）
+- npm グローバルパッケージも mise の node 配下に再インストール済み
+- **`conf.d/packages.toml` の brew 宣言は prune 実行前まで残してある**（併存中の安全側）
+- 残作業: 数日併用後 → packages.toml から移行21本の宣言を削除・`yadm` 追加・`jandedobbeleer/oh-my-posh` tap 削除 → `mise bootstrap packages prune --manager brew`（詳細は `migrate-guide.md`）
 
 ## 新マシンのセットアップ
 
@@ -83,7 +100,7 @@ mise upgrade           # 全ツールを更新
 # Homebrew と mise を導入後
 yadm clone git@github.com:fuchami/dotfiles.git
 yadm bootstrap   # 内部で mise bootstrap --only packages,macos-defaults --yes を実行
-mise install     # [tools]（ruby@3 等）も入れる（--only 対象外のため個別実行）
+mise install     # [tools]（22本）も入れる（--only 対象外のため個別実行）
 ```
 
 ## 新マシンでの手動設定（自動化できないもの）
@@ -97,6 +114,7 @@ mise install     # [tools]（ruby@3 等）も入れる（--only 対象外のた�
   - フルディスクアクセス: 必要な開発ツール
 - **キーボード**: 入力ソースに Google日本語入力を追加（システム設定 > キーボード > 入力ソース）。キーボード配列は ABC
 - **Bluetooth**: トラックパッド / キーボード / マウスのペアリング
+- **npm グローバルパッケージ**: mise の node 配下に `npm i -g @mariozechner/claude-bridge @mermaid-js/mermaid-cli neovim @switchbot/homebridge-switchbot homebridge-tplink-smarthome`
 - **その他**: Wi-Fi、壁紙、Dock に並べるアプリ、アカウント系アプリのサインイン（Slack / Spotify / LINE / Google Drive など）
 
 ## 注意事項
