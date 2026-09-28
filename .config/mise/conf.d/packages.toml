@@ -74,6 +74,4 @@
 
 # --- macOS: other apps ---
 "brew-cask:raycast" = { version = "latest", adopt = true }
-"brew-cask:readdle-spark" = { version = "latest", adopt = true }
 "brew-cask:slack" = { version = "latest", adopt = true }
-"brew-cask:spotify" = { version = "latest", adopt = true }
