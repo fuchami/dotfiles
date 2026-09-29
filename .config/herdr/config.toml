@@ -88,7 +88,7 @@ command = "herdr-splits.resize-right"
 
 # for herdr-quickselect
 [[keys.command]]
-key = "prefix+l"
+key = "prefix+u"
 type = "plugin_action"
 command = "choplin.quickselect.open-url"
 description = "Open visible URL"

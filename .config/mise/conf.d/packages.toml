@@ -1,54 +1,34 @@
 # brew packages
+# ※ 開発ランタイム・CLI ツールは config.toml の [tools]（mise）で管理する
+#    （macOS 専用のもの / mise registry に無いもののみここに残す）
 
 [bootstrap.brew.taps]
 "anomalyco/tap" = "https://github.com/anomalyco/homebrew-tap.git"                 # opencode-v2
 "felixkratz/formulae" = "https://github.com/felixkratz/homebrew-formulae.git"     # borders
-"jandedobbeleer/oh-my-posh" = "https://github.com/jandedobbeleer/homebrew-oh-my-posh.git"  # oh-my-posh
+"nikitabobko/tap" = "https://github.com/nikitabobko/homebrew-tap.git"             # aerospace
 "xwmx/taps" = "https://github.com/xwmx/homebrew-taps.git"                         # nb
 
 [bootstrap.packages]
 # --- core CLI tools ---
-"brew:bash" = "latest"
-"brew:bat" = "latest"
-"brew:fd" = "latest"
-"brew:fzf" = "latest"
-"brew:jq" = "latest"
-"brew:lsd" = "latest"
-"brew:ripgrep" = "latest"
+"brew:bash" = "latest"        # macOS の bash 3.2 対策
+"brew:git" = "latest"
 "brew:tree" = "latest"
 "brew:wget" = "latest"
+"brew:yadm" = "latest"
 "brew:xdg-ninja" = "latest"
 
 # --- shell (zsh) ---
 "brew:hyfetch" = "latest"
-"brew:sheldon" = "latest"
-"brew:zoxide" = "latest"
-"brew:jandedobbeleer/oh-my-posh/oh-my-posh" = "latest"
 
-# --- dev runtimes ---
-"brew:deno" = "latest"
-"brew:go" = "latest"
-"brew:node" = "latest"
-"brew:uv" = "latest"
+# --- dev tools ---
 "brew:luarocks" = "latest"
 "brew:pkgconf" = "latest"
 
-# --- dev tools (VCS / editor) ---
-"brew:git" = "latest"
-"brew:git-delta" = "latest"
-"brew:gh" = "latest"
-"brew:ghq" = "latest"
-"brew:go-task" = "latest"
-"brew:neovim" = "latest"
-"brew:lazygit" = "latest"
-
 # --- TUI / personal tools ---
-"brew:herdr" = "latest"
 "brew:mactop" = "latest"
 "brew:xwmx/taps/nb" = "latest"
 "brew:ollama" = "latest"
 "brew:anomalyco/tap/opencode-v2" = "latest"
-"brew:yazi" = "latest"
 
 # --- image / document / network ---
 "brew:imagemagick" = "latest"

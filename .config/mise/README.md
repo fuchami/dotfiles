@@ -1,20 +1,17 @@
 # mise 設定メモ
 
 このディレクトリは [mise](https://mise.jdx.dev/) のグローバル設定。
-**brew パッケージ・macOS のシステム設定（defaults）・開発ツール（Ruby 等）を宣言的に管理**している。
+**開発ツール（ランタイム・CLI）・brew パッケージ・macOS のシステム設定（defaults）を宣言的に管理**している。
 
-- 設定ファイル（dotfiles）自体の管理は yadm のまま（`~/.config` 以下）
-- パッケージ・defaults は「宣言と実機の差分を埋める」形で適用される（冪等・何度実行しても安全）
 
 ## ファイル構成
 
 | ファイル               | 役割                                                        |
 |------------------------|-------------------------------------------------------------|
 | `config.toml`          | エントリポイント + `[tools]`（開発ツールのバージョン管理）  |
-| `conf.d/packages.toml` | brew formula / cask / taps の宣言（用途ごとにグルーピング） |
+| `conf.d/packages.toml` | brew 残留分の宣言（macOS 専用 / mise registry 非対応の formula・cask・taps） |
 | `conf.d/macos.toml`    | Dock / Finder / トラックパッドなどの defaults 宣言          |
 
-`conf.d/*.toml` は mise が自動で読み込む（アルファベット順）。
 
 ## よく使うコマンド
 
@@ -31,15 +28,15 @@ mise bootstrap --only packages,macos-defaults
 
 # アップデート
 mise bootstrap packages upgrade               # 一括更新（auto_updates 系のアプリは自己更新のためスキップ）
-mise bootstrap packages upgrade brew:neovim   # 個別更新
-mise upgrade                                  # [tools]（ruby 等）の更新（別系統なので両方回す）
+mise bootstrap packages upgrade brew:wget     # 個別更新
+mise upgrade                                  # [tools] の更新（別系統なので両方回す）
 ```
 
 ## パッケージの増減
 
 ```sh
 # 追加（conf.d/packages.toml に書き込まれてインストールされる）
-mise bootstrap packages use brew:ripgrep --path ~/.config/mise/conf.d/packages.toml
+mise bootstrap packages use brew:mosh --path ~/.config/mise/conf.d/packages.toml
 mise bootstrap packages use brew-cask:firefox --path ~/.config/mise/conf.d/packages.toml
 
 # 削除（宣言から外したら、未宣言パッケージを掃除）
@@ -67,37 +64,22 @@ mise bootstrap macos defaults status
 
 ## 開発ツール（`[tools]`）の管理
 
-Ruby などの開発ランタイムは brew と別に mise がバージョン管理する。
+ランタイム・CLI ツールは mise がバージョン管理する。Linux サーバでも `mise install` だけで同じ構成が揃う
+（`conf.d/packages.toml` は macOS 専用 / mise registry 非対応のみ。Linux では `git` 等は distro のパッケージマネージャで入れる）。
 
 ```sh
-mise use -g ruby@3     # グローバルに導入（config.toml の [tools] に追記される）
-mise ls                # 導入済みツールの一覧
-mise upgrade           # 全ツールを更新
+mise use -g <tool>      # 追加（config.toml の [tools] に記録される）
+mise install --dry-run  # 入る予定の確認
+mise upgrade            # 全ツールを更新
 ```
 
-現在の構成: `ruby@3`
+`latest` 指定でも `mise.lock` に解決済みバージョンが記録されるため再現性は確保される。
 
-## 新マシンのセットアップ
+### 注意
 
-```sh
-# Homebrew と mise を導入後
-yadm clone git@github.com:fuchami/dotfiles.git
-yadm bootstrap   # 内部で mise bootstrap --only packages,macos-defaults --yes を実行
-mise install     # [tools]（ruby@3 等）も入れる（--only 対象外のため個別実行）
-```
-
-## 新マシンでの手動設定（自動化できないもの）
-
-`mise bootstrap` では再現できない設定。初回セットアップ後に手動で行う。
-
-- **Apple ID / iCloud**: サインイン、iCloud Drive の有効化（Finder の iCloud 連携もこれに依存）
-- **TCC 権限**（初回起動時のダイアログで許可）
-  - 画面収録: Raycast / terminal-browser など
-  - アクセシビリティ: Karabiner-Elements / AeroSpace
-  - フルディスクアクセス: 必要な開発ツール
-- **キーボード**: 入力ソースに Google日本語入力を追加（システム設定 > キーボード > 入力ソース）。キーボード配列は ABC
-- **Bluetooth**: トラックパッド / キーボード / マウスのペアリング
-- **その他**: Wi-Fi、壁紙、Dock に並べるアプリ、アカウント系アプリのサインイン（Slack / Spotify / LINE / Google Drive など）
+- `xwmx/taps/nb` は mise が tap formula を解決できず bootstrap が失敗することがある（2026.9.12 時点）。
+  その場合は `brew install xwmx/taps/nb` を別途実行する
+- `opencode` は `[tools]` に追加しない（mise registry 版は v1 系しか取れず、現行 v2 にダウングレードされる）
 
 ## 注意事項
 
