@@ -1,8 +1,3 @@
-# mise グローバル設定のエントリポイント
-# 内容は conf.d/ に分割:
-#   conf.d/packages.toml - brew パッケージ ([bootstrap.packages] / [bootstrap.brew.taps])
-#   conf.d/macos.toml    - macOS defaults ([bootstrap.macos.*] / hooks)
-
 [tools]
 # --- runtimes ---
 ruby = "3"
@@ -25,7 +20,6 @@ oh-my-posh = "latest"
 delta = "latest"
 gh = "latest"
 ghq = "latest"
-task = "latest"
 lazygit = "latest"
 neovim = "latest"
 # --- TUI ---

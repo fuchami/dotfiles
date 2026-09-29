@@ -14,7 +14,6 @@
 | `conf.d/packages.toml` | brew 残留分の宣言（macOS 専用 / mise registry 非対応の formula・cask・taps） |
 | `conf.d/macos.toml`    | Dock / Finder / トラックパッドなどの defaults 宣言          |
 
-`conf.d/*.toml` は mise が自動で読み込む（アルファベット順）。
 
 ## よく使うコマンド
 
@@ -93,31 +92,8 @@ mise upgrade           # 全ツールを更新
 `conf.d/packages.toml` には macOS 専用 / mise registry 非対応のもの（`git` `tree` `wget` `mosh` `imagemagick` `poppler` `yadm` `nb` `opencode-v2` 等）のみを残す。
 Linux サーバでは `mise install` のみで `[tools]` が揃う（`git` 等は distro のパッケージマネージャで入れる）。
 
-## 新マシンのセットアップ
-
-```sh
-# Homebrew と mise を導入後
-yadm clone git@github.com:fuchami/dotfiles.git
-yadm bootstrap   # 内部で mise bootstrap --only packages,macos-defaults --yes を実行
-mise install     # [tools]（22本）も入れる（--only 対象外のため個別実行）
-```
-
 ※ `xwmx/taps/nb` は mise が tap formula を解決できず bootstrap が失敗することがある（2026.9.12 時点）。
    その場合は `brew install xwmx/taps/nb` を別途実行する。
-
-## 新マシンでの手動設定（自動化できないもの）
-
-`mise bootstrap` では再現できない設定。初回セットアップ後に手動で行う。
-
-- **Apple ID / iCloud**: サインイン、iCloud Drive の有効化（Finder の iCloud 連携もこれに依存）
-- **TCC 権限**（初回起動時のダイアログで許可）
-  - 画面収録: Raycast / terminal-browser など
-  - アクセシビリティ: Karabiner-Elements / AeroSpace
-  - フルディスクアクセス: 必要な開発ツール
-- **キーボード**: 入力ソースに Google日本語入力を追加（システム設定 > キーボード > 入力ソース）。キーボード配列は ABC
-- **Bluetooth**: トラックパッド / キーボード / マウスのペアリング
-- **npm グローバルパッケージ**: mise の node 配下に `npm i -g @mariozechner/claude-bridge @mermaid-js/mermaid-cli neovim @switchbot/homebridge-switchbot homebridge-tplink-smarthome`
-- **その他**: Wi-Fi、壁紙、Dock に並べるアプリ、アカウント系アプリのサインイン（Slack / Spotify / LINE / Google Drive など）
 
 ## 注意事項
 

@@ -5,10 +5,11 @@
 [bootstrap.brew.taps]
 "anomalyco/tap" = "https://github.com/anomalyco/homebrew-tap.git"                 # opencode-v2
 "felixkratz/formulae" = "https://github.com/felixkratz/homebrew-formulae.git"     # borders
+"nikitabobko/tap" = "https://github.com/nikitabobko/homebrew-tap.git"             # aerospace
 "xwmx/taps" = "https://github.com/xwmx/homebrew-taps.git"                         # nb
 
 [bootstrap.packages]
-# --- core CLI tools（mise registry になく brew のまま）---
+# --- core CLI tools ---
 "brew:bash" = "latest"        # macOS の bash 3.2 対策
 "brew:git" = "latest"
 "brew:tree" = "latest"
