@@ -2,6 +2,13 @@
 
 system_type=$(uname -s)
 
+# install mise if it's missing ([tools] / brew packages / macOS defaults are managed by mise)
+if ! command -v mise >/dev/null 2>&1; then
+  echo "Installing mise"
+  curl https://mise.run | sh
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
 if [ "$system_type" = "Darwin" ]; then
 
   # install homebrew if it's missing
@@ -10,23 +17,33 @@ if [ "$system_type" = "Darwin" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
-  # install mise if it's missing (brew packages & macOS defaults are managed by mise bootstrap)
-  if ! command -v mise >/dev/null 2>&1; then
-    echo "Installing mise"
-    curl https://mise.run | sh
-  fi
-
   # clone AstroNvim Config
   git clone git@github.com:fuchami/astronvim_config.git ~/.config/nvim
 
-  # setup zsh
+  # setup zsh (macOS は /etc/zshenv)
   echo 'export ZDOTDIR="$HOME"/.config/zsh' | sudo tee -a /etc/zshenv
   # history file
-  mkdir -p ~/.local/state/zsh && touch mkdir ~/.local/state/zsh/history
+  mkdir -p ~/.local/state/zsh && touch ~/.local/state/zsh/history
 
   # brew packages + macOS defaults (managed in ~/.config/mise/config.toml)
   if command -v mise >/dev/null 2>&1; then
     mise bootstrap --only packages,macos-defaults --yes
   fi
+
+elif [ "$system_type" = "Linux" ]; then
+
+  # apt packages (mise registry にないもの。poppler は Debian 系では poppler-utils)
+  sudo apt-get update
+  sudo apt-get install -y git curl tree wget mosh imagemagick poppler-utils zsh
+
+  # clone AstroNvim Config
+  git clone git@github.com:fuchami/astronvim_config.git ~/.config/nvim
+
+  # setup zsh (Linux は /etc/zsh/zshenv)
+  echo 'export ZDOTDIR="$HOME"/.config/zsh' | sudo tee -a /etc/zsh/zshenv
+  mkdir -p ~/.local/state/zsh && touch ~/.local/state/zsh/history
+
+  # [tools] のみ（brew packages / macOS defaults は macOS 専用）
+  mise install
 
 fi
