@@ -2,8 +2,9 @@
 # --- runtimes ---
 ruby = "3"
 deno = "2"
-node = "26"
+node = "22"
 go = "1"
+python = "3.13"
 uv = "latest"
 # --- core CLI ---
 bat = "latest"
