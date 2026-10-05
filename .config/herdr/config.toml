@@ -4,6 +4,10 @@ onboarding = false
 name = "kanagawa"
 
 auto_switch = false
+
+[terminal]
+shell_mode = "login"
+
 [keys]
 prefix = "ctrl+q"
 

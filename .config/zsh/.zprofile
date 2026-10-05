@@ -14,25 +14,6 @@ if [[ -z "$PAGER" ]]; then
   export PAGER='less'
 fi
 
-# Paths
-# Ensure path arrays do not contain duplicates.
-typeset -gU cdpath fpath mailpath path
-
-# Set the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
-
-# Set the list of directories that Zsh searches for programs.
-path=(
-  $HOME/.rd/bin/(N) # Rancher Desktop Docker CLI
-  $HOME/{,s}bin(N)
-  /opt/{homebrew,local}/{,s}bin(N)
-  /usr/local/{,s}bin(N)
-  $HOME/.opencode/bin(N)
-  $path
-)
-
 # Less
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
@@ -46,3 +27,6 @@ fi
 if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
+
+# uv
+[[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
