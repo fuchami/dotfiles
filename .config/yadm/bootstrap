@@ -9,6 +9,13 @@ if ! command -v mise >/dev/null 2>&1; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
+# zsh history & completion cache dirs (~/.zshenv is managed by yadm)
+mkdir -p ~/.local/state/zsh ~/.cache/zsh
+touch ~/.local/state/zsh/history
+
+# clone AstroNvim Config
+git clone git@github.com:fuchami/astronvim_config.git ~/.config/nvim
+
 if [ "$system_type" = "Darwin" ]; then
 
   # install homebrew if it's missing
@@ -16,14 +23,6 @@ if [ "$system_type" = "Darwin" ]; then
     echo "Installing homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
-
-  # clone AstroNvim Config
-  git clone git@github.com:fuchami/astronvim_config.git ~/.config/nvim
-
-  # setup zsh (macOS は /etc/zshenv)
-  echo 'export ZDOTDIR="$HOME"/.config/zsh' | sudo tee -a /etc/zshenv
-  # history file
-  mkdir -p ~/.local/state/zsh && touch ~/.local/state/zsh/history
 
   # brew packages + macOS defaults (managed in ~/.config/mise/config.toml)
   if command -v mise >/dev/null 2>&1; then
@@ -35,13 +34,6 @@ elif [ "$system_type" = "Linux" ]; then
   # apt packages (mise registry にないもの。poppler は Debian 系では poppler-utils)
   sudo apt-get update
   sudo apt-get install -y git curl tree wget mosh imagemagick poppler-utils zsh
-
-  # clone AstroNvim Config
-  git clone git@github.com:fuchami/astronvim_config.git ~/.config/nvim
-
-  # setup zsh (Linux は /etc/zsh/zshenv)
-  echo 'export ZDOTDIR="$HOME"/.config/zsh' | sudo tee -a /etc/zsh/zshenv
-  mkdir -p ~/.local/state/zsh && touch ~/.local/state/zsh/history
 
   # [tools] のみ（brew packages / macOS defaults は macOS 専用）
   mise install
