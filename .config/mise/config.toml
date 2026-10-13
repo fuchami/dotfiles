@@ -23,6 +23,7 @@ gh = "latest"
 ghq = "latest"
 lazygit = "latest"
 neovim = "latest"
+kubectl = "latest"
 # --- TUI ---
 yazi = "latest"
 herdr = "latest"
