@@ -6,6 +6,7 @@ node = "22"
 go = "1"
 python = "3.13"
 uv = "latest"
+
 # --- core CLI ---
 bat = "latest"
 fd = "latest"
@@ -13,17 +14,24 @@ fzf = "latest"
 jq = "latest"
 lsd = "latest"
 ripgrep = "latest"
+
 # --- shell ---
 sheldon = "latest"
 zoxide = "latest"
 oh-my-posh = "latest"
+
 # --- dev tools ---
 delta = "latest"
 gh = "latest"
 ghq = "latest"
 lazygit = "latest"
 neovim = "latest"
+
+# --- dev tools ---
 kubectl = "latest"
+kubectx = "latest"
+kubens = "latest"
+
 # --- TUI ---
 yazi = "latest"
 herdr = "latest"

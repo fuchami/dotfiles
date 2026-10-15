@@ -48,6 +48,13 @@ snippets:
   - name: yadm enter lazygit
     keyword: yg
     snippet: yadm enter lazygit
+  # k8s
+  - name: kubectl
+    keyword: k
+    snippet: kubectl
+  - name: kubectx
+    keyword: ktx
+    snippet: kubectx
   # nb cli
   - name: Edit Note
     keyword: nbe
