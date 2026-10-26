@@ -22,6 +22,7 @@
 # --- dev tools ---
 "brew:luarocks" = "latest"
 "brew:pkgconf" = "latest"
+"brew:terminal-notifier" = "latest"
 
 # --- TUI / personal tools ---
 "brew:mactop" = "latest"
@@ -42,8 +43,6 @@
 
 # --- macOS: terminals / dev apps ---
 "brew-cask:ghostty" = { version = "latest", adopt = true }
-"brew-cask:wezterm" = { version = "latest", adopt = true }
-"brew-cask:visual-studio-code" = { version = "latest", adopt = true }
 "brew-cask:terminal-browser" = { version = "latest", adopt = true }
 
 # --- macOS: input / keyboard ---
