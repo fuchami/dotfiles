@@ -20,7 +20,8 @@
   },
   "animations": true,
   "plugins": [
-    "./herdr-opencode"
+    "./herdr-opencode",
+    "@rashidrazak/opencode-status-line"
   ],
   "tabs": {
     "enabled": false,
