@@ -10,7 +10,6 @@ shell_mode = "login"
 
 [keys]
 prefix = "ctrl+q"
-open_notification_target = 'prefix+o'
 
 split_vertical = "prefix+|"
 
@@ -45,6 +44,19 @@ command = "lazygit"
 description = "open lazygit"
 width = "90%"
 height = "90%"
+
+# herdr-nvim
+[[keys.command]]
+key = "prefix+e"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.toggle"
+description = "nvim sidebar"
+
+[[keys.command]]
+key = "prefix+o"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.pick-file"
+description = "open file from agent output"
 
 # for herdr-splits.nvim
 [[keys.command]]
