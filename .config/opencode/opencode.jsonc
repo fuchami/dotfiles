@@ -34,6 +34,9 @@
     }
   },
   "share": "disabled",
+  "plugins": [
+    "opencode-subagent-statusline",
+  ],
   "experimental": {
     "todo": true
   },
