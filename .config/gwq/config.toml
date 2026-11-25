@@ -1,0 +1,21 @@
+# gwq - Git worktree manager
+# ghq root直下に worktree を配置し、cloneと同じ木に集約する
+# worktree は `github.com/owner/repo=branch` 形式で clone の隣に並ぶ
+
+[naming]
+template = '{{.Host}}/{{.Owner}}/{{.Repository}}={{.Branch}}'
+
+[worktree]
+basedir = '/Volumes/NVME_SSD_2TB/ghq'
+auto_mkdir = true
+
+[finder]
+preview = true
+
+[cd]
+launch_shell = false      # シェル統合でカレントシェルにcd
+auto_cd_on_add = true     # gwq add 後に自動cd
+
+[ui]
+icons = true
+tilde_home = true

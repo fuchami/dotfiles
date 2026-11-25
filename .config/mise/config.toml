@@ -24,6 +24,7 @@ oh-my-posh = "latest"
 delta = "latest"
 gh = "latest"
 ghq = "latest"
+"aqua:d-kuro/gwq" = "latest"
 lazygit = "latest"
 neovim = "latest"
 

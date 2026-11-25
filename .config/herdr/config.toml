@@ -27,15 +27,17 @@ switch_workspace = "cmd+1..9"
 key = "prefix+shift+o"
 type = "popup"
 command = '''
-repo="$(ghq list -p | fzf --prompt='space> ')" || exit 0
-[ -n "$repo" ] || exit 0
-herdr_bin="${HERDR_BIN_PATH:-herdr}"
-label="$(basename "$repo")"
-"$herdr_bin" workspace create --cwd "$repo" --label "$label" --focus
+sel="$(gwq list -g --json | jq -r '.[].path' | fzf --prompt='gwq> ' \
+  --preview='git -C {} log --oneline -10 --color=always; echo; git -C {} status -sb')"
+[ -n "$sel" ] || exit 0
+case "$sel" in
+  *=*) herdr worktree open --cwd "${sel%%=*}" --path "$sel" --label "${sel##*=}" --focus ;;
+  *) herdr workspace create --cwd "$sel" --label "$(basename "$sel")" --focus ;;
+esac
 '''
-description = "ghqからワークスペースを開く"
-width = "80%"
-height = "80%"
+description = "gwq/ghqからワークスペースを開く"
+width = "90%"
+height = "90%"
 
 [[keys.command]]
 key = "cmd+g"

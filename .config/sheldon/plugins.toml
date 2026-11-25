@@ -45,6 +45,9 @@ use = ["zeno-plugin.zsh"]
 [plugins.oh-my-posh]
 inline = 'eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/kanagawa.omp.toml)"'
 
+[plugins.gwq]
+inline = 'zsh-defer -c "source <(gwq completion zsh)"'
+
 [plugins.functions]
 local = "~/.config/zsh/functions/"
 use = ["*.zsh"]
