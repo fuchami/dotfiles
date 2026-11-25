@@ -30,8 +30,9 @@ command = '''
 sel="$(gwq list -g --json | jq -r '.[].path' | fzf --prompt='gwq> ' \
   --preview='git -C {} log --oneline -10 --color=always; echo; git -C {} status -sb')"
 [ -n "$sel" ] || exit 0
+# shortcut: worktree判別はgwq命名 repo@branch の@に依存。naming.templateを変えるならここも変える
 case "$sel" in
-  *=*) herdr worktree open --cwd "${sel%%=*}" --path "$sel" --label "${sel##*=}" --focus ;;
+  *@*) herdr worktree open --cwd "${sel%%@*}" --path "$sel" --label "${sel#"${sel%%@*}@"}" --focus ;;
   *) herdr workspace create --cwd "$sel" --label "$(basename "$sel")" --focus ;;
 esac
 '''
